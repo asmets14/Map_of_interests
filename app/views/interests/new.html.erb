@@ -1,0 +1,27 @@
+<div class="jumbotron">
+  <div class="container">
+    <h2>Interest></h2>
+
+    <%= form_for @interest do |f|  %>
+
+      <div class="form-group">
+        <%= f.label :category %>
+        <%= f.file_field :category %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :longitude %>
+        <%= f.file_field :longitude %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :latitude %>
+        <%= f.file_field :latitude %>
+      </div>
+
+      <div class='form-group'>
+        <%= f.submit 'Create', :class => 'form-control btn btn-primary' %>
+      </div>
+    <% end %>
+    </div>
+  </div>
