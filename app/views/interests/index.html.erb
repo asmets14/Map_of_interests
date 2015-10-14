@@ -1,3 +1,18 @@
+<script>
+function show_by_filter(elem){
+  $.ajax({
+    type: "GET",
+    url: '/interests',
+    data : 'category='+elem,
+    success: function (data) {
+      $.each(data.message,function(index, valeur){
+        $('.filter').append(valeur.name+' : '+valeur.address+'<br/>')
+      });
+    }
+  })
+}
+
+</script>
 <div class= 'jumbotron container'>
   <% @interest.each do |i| %>
     <div class="row">
@@ -7,4 +22,20 @@
       </div>
     </div>
   <% end%>
+
+  <div class="row">
+    <%= render 'maps.html' %>
+  </div>
+  <div class="row">
+    <FORM>
+      <INPUT type="checkbox" onclick="show_by_filter( 'Theatre')" > Theatre
+      <INPUT type="checkbox" onclick="show_by_filter('Club')"> Club
+      <INPUT type="checkbox" onclick="show_by_filter('Museum')"> Museum
+      <INPUT type="checkbox" onclick="show_by_filter('All')"> All
+    </FORM>
+  </div>
+  <div class="row">
+    <div class='filter' >
+    </div>
+  </div>
 </div>
