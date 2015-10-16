@@ -3,8 +3,9 @@ class CreateInterests < ActiveRecord::Migration
     create_table :interests do |t|
       t.string :name
       t.string :category
-      t.string :longitude
-      t.string :latitude
+      t.string :address
+      t.float  :longitude
+      t.float  :latitude
 
       t.timestamps
     end
