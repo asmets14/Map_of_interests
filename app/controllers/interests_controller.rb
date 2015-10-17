@@ -1,8 +1,7 @@
 class InterestsController < ApplicationController
-  
   def index
     @interest = Interest.all
-  end  
+  end
 
   def show
     if params[:category] == 'All'
@@ -12,5 +11,5 @@ class InterestsController < ApplicationController
     end
     data = {:message => @interest}
     render :json => data, :status => :ok
-    end
+  end
 end
