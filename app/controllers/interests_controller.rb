@@ -12,4 +12,9 @@ class InterestsController < ApplicationController
     data = {:message => @interest}
     render :json => data, :status => :ok
   end
+
+  def fullscreen
+
+  end
+
 end
