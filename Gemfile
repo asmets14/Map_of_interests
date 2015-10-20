@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
-# Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -28,6 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'geocoder'
+
 group :development do
   gem 'spring'
   gem 'sqlite3'
