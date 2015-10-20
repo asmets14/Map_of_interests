@@ -20,22 +20,18 @@
 
     <div class="row checkbox-container">
       <div class="col-sm-12">
-          <div class="btn-full-screen">
-            <button id="btn-enter-full-screen">Enter full Screen</button>
-            <button id="btn-exit-full-screen" >Exit full Screen</button>
-          </div>
         <form>
-          <input type="checkbox" id='theatre' onclick="checkbox('theatre')" > Theatre
-          <input type="checkbox" id='museum' onclick="checkbox('museum')" > Museum
-          <input type="checkbox" id='club' onclick="checkbox('club')"> Club
+          <input type="checkbox" id='Theatre' onclick="checkbox('Theatre')" checked> Theatre
+          <input type="checkbox" id='Museum' onclick="checkbox('Museum')" checked > Museum
+          <input type="checkbox" id='Club' onclick="checkbox('Club')" checked> Club
         </form>
       </div>
     </div>
 
     <div class="row">
-      <%= render 'info', :elem => 'theatre' %>
-      <%= render 'info', :elem => 'museum' %>
-      <%= render 'info', :elem => 'club' %>
+      <%= render 'info', :elem => 'Theatre' %>
+      <%= render 'info', :elem => 'Museum' %>
+      <%= render 'info', :elem => 'Club' %>
     </div>
   </div>
 </div>

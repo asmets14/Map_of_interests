@@ -4,7 +4,7 @@ class InterestsController < ApplicationController
   end
 
   def show
-    if params[:category] == 'All'
+    if params[:category] == 'all'
       @interest = Interest.all
     else
       @interest = Interest.where(category: params[:category].capitalize)

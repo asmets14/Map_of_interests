@@ -1,5 +1,17 @@
 var map;
 var markers = [];
+var iconBase = 'https://storage.googleapis.com/geolocalisation/';
+var icons = {
+  Theatre: {
+    icon: iconBase + 'theatre05.png'
+  },
+  Club: {
+    icon: iconBase + 'club01.png'
+  },
+  Museum: {
+    icon: iconBase + 'museum.png'
+  }
+};
 
 function initMap() {
   var paris = {lat: 41.87194, lng: 12.567379999999957};
@@ -11,46 +23,6 @@ function initMap() {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
-//=====full screen section===========//
-  var googleMapWidth = $("#map").css('width');
-  var googleMapHeight = $("#map").css('height');
-
-  $('#btn-enter-full-screen').click(function() {
-    $("#map").css({
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '85%',
-      backgroundColor: 'white'
-    });
-    $("#map-canvas").css({
-      height: '100%'
-    });
-
-  google.maps.event.trigger(map, 'resize');
-  $('#btn-enter-full-screen').toggle();
-  $('#btn-exit-full-screen').toggle();
-    return false;
-  });
-
-  $('#btn-exit-full-screen').click(function() {
-    $("#map").css({
-        position: 'relative',
-        top: 0,
-        width: googleMapWidth,
-        height: googleMapHeight,
-        backgroundColor: 'transparent'
-    });
-
-    google.maps.event.trigger(map, 'resize');
-    map.setCenter(newyork);
-    $('#btn-enter-full-screen').toggle();
-    $('#btn-exit-full-screen').toggle();
-    return false;
-  });
-//=========================//
-
   myloc = new google.maps.Marker({
     clickable: false,
     icon: new google.maps.MarkerImage('http://maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
@@ -58,15 +30,25 @@ function initMap() {
                                         new google.maps.Point(0,18),
                                         new google.maps.Point(11,11)
                                       ),
-    shadow: null,
-    zIndex: 999,
     map: map
   })
 
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
-      var me = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-      myloc.setPosition(me);
-      map.setOptions({zoom : 10, center: me});
+    var me = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+    myloc.setPosition(me);
+    map.setOptions({zoom : 14, center: me});
+  })
+  show_by_filter('all');
+}
+
+function show_by_filter(elem){
+  $.ajax({
+    type: "GET",
+    url: '/interests',
+    data : 'category='+elem,
+    success: function (data) {
+      addMarker(data.message);
+    }
   })
 }
 
@@ -77,62 +59,32 @@ function setMapOnAll(map) {
 }
 
 function setMapNotOnAll(map, elem) {
-  for (var i = 0; i < markers.length; i++) {
+  for (i = 0; i < markers.length; i++) {
     if(markers[i].category == elem)
-    markers[i].setMap(map);
+      markers[i].setMap(map);
   }
 }
 
-function addMarker(location, id, info, name) {
+function addMarker(arrInfo) {
   var image;
   var marker;
 
-  if(id == 'theatre')
-       image = {url: 'https://storage.googleapis.com/geolocalisation/theatre05.png'};
-  else if(id == 'club')
-    image = {url: 'https://storage.googleapis.com/geolocalisation/club01.png'};
-  else if(id == 'museum')
-    image = {url: 'https://storage.googleapis.com/geolocalisation/museum.png'}
+  for (i = 0; i < arrInfo.length ; i++){
     marker = new google.maps.Marker({
-    position: location,
-    icon : image,
-    map: map,
-    category: id,
-  });
-  markers.push(marker);
+      position: { lat: arrInfo[i].latitude, lng: arrInfo[i].longitude },
+      icon: icons[arrInfo[i].category].icon,
+      map: map,
+      category: arrInfo[i].category,
+    });
+    markers.push(marker);
+  }
 }
 
-
-function show_by_filter(elem){
-  $.ajax({
-  type: "GET",
-  url: '/interests',
-  data : 'category='+elem,
-  success: function (data) {
-    $.each(data.message,function(index, valeur){      // Renvoyer la valeur a Addmarker
-      loc = { lat: valeur.latitude, lng: valeur.longitude };
-      info =  valeur.address
-      addMarker(loc, elem);
-    })
-   }
-  })
-}
-
-function HomePos(position){
-  var loc = { lat: position.coords.latitude, lng: position.coords.longitude };
-  alert(position.coords.longitude);
-  addMarker(loc, 'home');
-}
 
 function checkbox(id){
   if (document.getElementById(id).checked == true){
     $('.'+id).show();
-    if (id != 'home')
-      show_by_filter(id)
-    else{
-      if (navigator.geolocation)
-        navigator.geolocation.getCurrentPosition(HomePos);
-    }
+    setMapNotOnAll(map, id);
   }
   else{
     setMapNotOnAll(null, id);
