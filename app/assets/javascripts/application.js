@@ -13,6 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= FullScreenControl
-//= map
+//= require map
 //= require_tree .

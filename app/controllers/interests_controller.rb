@@ -14,7 +14,7 @@ class InterestsController < ApplicationController
   end
 
   def fullscreen
-
+      @interest = Interest.all
   end
 
 end
