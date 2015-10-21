@@ -20,7 +20,6 @@ a.nav-expander {
   -webkit-transition: right 0.3s ease-in-out 0s;
   -moz-transition: right 0.3s ease-in-out 0s;
   -o-transition: right 0.3s ease-in-out 0s;
-
 }
 
 a.nav-expander:hover {
@@ -46,13 +45,13 @@ nav {
   top: 0;
   width: 20em;
   z-index: 2000;
-  
+
   transition: right 0.3s ease-in-out 0s;
   -webkit-transition: right 0.3s ease-in-out 0s;
   -moz-transition: right 0.3s ease-in-out 0s;
   -o-transition: right 0.3s ease-in-out 0s;
-
 }
+
 .nav-expanded nav {
   right: 0;
 }
@@ -107,7 +106,7 @@ body.nav-expanded {
   border-right: 4px solid transparent;
   border-left: 4px solid transparent;
   content: "";
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 .main-menu a:hover .caret {
