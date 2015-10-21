@@ -8,18 +8,19 @@
   }
 </style>
 
-<div>
+<div class="fullscreen">
   <nav>
     <ul class="list-unstyled main-menu">
       <li class="text-right"><a href="#" id="nav-close">X</a></li>
-      <li><a href="#"><input type="checkbox" id='Theatre' onclick="checkbox('Theatre')" checked> Theatre</a></li>
-      <li><a href="#"><input type="checkbox" id='Museum' onclick="checkbox('Museum')" checked > Museum</a></li>
-      <li><a href="#"><input type="checkbox" id='Club' onclick="checkbox('Club')" checked> Club</a></li>
-    </ul>
-    <ul>
-      <%= render 'info', :elem => 'Theatre' %>
-      <%= render 'info', :elem => 'Museum' %>
-      <%= render 'info', :elem => 'Club' %>
+      <li><a href="#">
+        <label><input type="checkbox" id='Theatre' onclick="checkbox('Theatre')" checked> Theatre</label>
+      </a></li>
+      <li><a href="#">
+        <label><input type="checkbox" id='Museum' onclick="checkbox('Museum')" checked > Museum</label>
+      </a></li>
+      <li><a href="#">
+        <label><input type="checkbox" id='Club' onclick="checkbox('Club')" checked> Club</label>
+      </a></li>
     </ul>
   </nav>
 

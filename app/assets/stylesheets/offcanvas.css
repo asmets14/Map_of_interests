@@ -1,3 +1,8 @@
+.text-right{
+  padding-top: 0px !important;
+  padding-bottom: 4px !important;
+}
+
 a.nav-expander {
   background: none repeat scroll 0 0 #000000;
   color: #FFFFFF;
@@ -67,7 +72,7 @@ body.nav-expanded {
 #nav-close {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight: 300;
-  font-size: 24px;
+  font-size: 23px;
   padding-right: 10px;
 }
 
@@ -149,3 +154,4 @@ body.nav-expanded {
   margin: 0.1em 0.8em -0.1em 0;
   opacity: 1;
 }
+

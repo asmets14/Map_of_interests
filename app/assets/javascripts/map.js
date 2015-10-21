@@ -20,6 +20,7 @@ function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 2,
     center: paris,
+    mapTypeControl: false,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 
