@@ -7,60 +7,29 @@
     margin:0;
   }
 </style>
-<script type='text/javascript'>
-$(document).ready(function(){                       
 
-       //Navigation Menu Slider
-        $('#nav-expander').on('click',function(e){
-          e.preventDefault();
-          $('body').toggleClass('nav-expanded');
-        });
-        $('#nav-close').on('click',function(e){
-          e.preventDefault();
-          $('body').removeClass('nav-expanded');
-        });
-
-        // Initialize navgoco with default options
-        $(".main-menu").navgoco({
-            caret: '<span class="caret"></span>',
-            accordion: false,
-            openClass: 'open',
-            save: true,
-            cookie: {
-                name: 'navgoco',
-                expires: false,
-                path: '/'
-            },
-            slide: {
-                duration: 300,
-                easing: 'swing'
-            }
-        });
-
-      });
-</script>
 <div>
-	<nav>
-	  <ul class="list-unstyled main-menu">
-	    <li class="text-right"><a href="#" id="nav-close">X</a></li>
-	    <li><a href="#"><input type="checkbox" id='Theatre' onclick="checkbox('Theatre')" checked> Theatre</a></li>
-	    <li><a href="#"><input type="checkbox" id='Museum' onclick="checkbox('Museum')" checked > Museum</a></li>
-	    <li><a href="#"><input type="checkbox" id='Club' onclick="checkbox('Club')" checked> Club</a></li>
-	  </ul>
-	  <ul>
-	      <%= render 'info', :elem => 'Theatre' %>
-	      <%= render 'info', :elem => 'Museum' %>
-	      <%= render 'info', :elem => 'Club' %>
-	    </ul>
-	</nav>
-	
-	<div class="navbar navbar-fixed-top">
-	    <div class="navbar-header pull-right" >
-	      <a id="nav-expander" class="nav-expander fixed" style="width:65px;">
-	        <i class="fa fa-bars fa-lg white"></i>
-	      </a>
-	    </div>
-	</div>
+  <nav>
+    <ul class="list-unstyled main-menu">
+      <li class="text-right"><a href="#" id="nav-close">X</a></li>
+      <li><a href="#"><input type="checkbox" id='Theatre' onclick="checkbox('Theatre')" checked> Theatre</a></li>
+      <li><a href="#"><input type="checkbox" id='Museum' onclick="checkbox('Museum')" checked > Museum</a></li>
+      <li><a href="#"><input type="checkbox" id='Club' onclick="checkbox('Club')" checked> Club</a></li>
+    </ul>
+    <ul>
+      <%= render 'info', :elem => 'Theatre' %>
+      <%= render 'info', :elem => 'Museum' %>
+      <%= render 'info', :elem => 'Club' %>
+    </ul>
+  </nav>
+
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-header pull-right" >
+      <a id="nav-expander" class="nav-expander fixed" style="width:65px;">
+        <i class="fa fa-bars fa-lg white"></i>
+      </a>
+    </div>
+  </div>
 </div>
 
 <div id="map"></div>
