@@ -21,17 +21,17 @@
     <div class="row checkbox-container">
       <div class="col-sm-12">
         <form>
-          <label><input type="checkbox" id='Theatre' onclick="checkbox('Theatre')" checked> Theatre</label>
-          <label><input type="checkbox" id='Museum' onclick="checkbox('Museum')" checked > Museum</label>
-          <label><input type="checkbox" id='Club' onclick="checkbox('Club')" checked> Club</label>
-        </form>
+          <% @category.each do |c| %>
+            <label><input type="checkbox" id='<%= c %>' onclick="checkbox('<%= c %>')" checked> <%= c %></label>
+          <% end %>
+       </form>
       </div>
     </div>
 
     <div class="row">
-      <%= render 'info', :elem => 'Theatre' %>
-      <%= render 'info', :elem => 'Museum' %>
-      <%= render 'info', :elem => 'Club' %>
+      <% @category.each do |c| %>
+        <%= render 'info', :elem => c %>
+      <% end %>
     </div>
   </div>
 </div>

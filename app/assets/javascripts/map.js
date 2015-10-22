@@ -10,6 +10,15 @@ var icons = {
   },
   Museum: {
     icon: iconBase + 'museum.png'
+  },
+  Cafe: {
+    icon: iconBase + 'cafe.png'
+  },
+  Restaurant: {
+    icon: iconBase + 'restaurant.png'
+  },
+  Bar: {
+    icon: iconBase + 'bar.png'
   }
 };
 
@@ -75,7 +84,7 @@ function addMarker(arrInfo) {
     marker = new google.maps.Marker({
       clickable : true,
       position: { lat: arrInfo[i].latitude, lng: arrInfo[i].longitude },
-     // icon: icons[arrInfo[i].category].icon,
+      icon: icons[arrInfo[i].category].icon,
       map: map,
       category: arrInfo[i].category
     });
