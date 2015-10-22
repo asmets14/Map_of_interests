@@ -1,5 +1,5 @@
 class Interest < ActiveRecord::Base
-  CATEGORY = %w(Theatre Club Museum)
+  CATEGORY = %w(Theatre Club Museum Restaurant Bar Cafe)
   geocoded_by :address
   before_validation :geocode
   validates :address, presence: true

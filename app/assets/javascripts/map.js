@@ -73,7 +73,7 @@ function addMarker(arrInfo) {
   for (i = 0; i < arrInfo.length ; i++){
     marker = new google.maps.Marker({
       position: { lat: arrInfo[i].latitude, lng: arrInfo[i].longitude },
-      icon: icons[arrInfo[i].category].icon,
+     // icon: icons[arrInfo[i].category].icon,
       map: map,
       category: arrInfo[i].category,
     });

@@ -5,4 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+require 'csv'
+
+  AdminUser.create!(email: 'admin@users.com', password: 'password', password_confirmation: 'password')
+
+  path = "#{Rails.root}/spec/fixtures/interests_points.csv"
+  CSV.foreach(path, { encoding: "UTF-8", headers: true,  header_converters: :symbol, converters: :all}) do |row|
+      Interest.create(row.to_hash)
+  end
