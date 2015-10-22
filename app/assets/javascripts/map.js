@@ -105,7 +105,6 @@ function addMarker(arrInfo) {
             '<p> Phone number: Ajouter telphone dans Db. arrInfo[i].phone </p>' +
             '<p> website: link xxxx <p>'+
             '</div>'+
-            '<p><img src="https://storage.googleapis.com/geolocalisation/photo1.jpg" alt="Mountain View" style="width:304px;height:228px;">'+
             '</div>');
             infoBubble.addTab("<div class='infowindow'>Rating</div>", "<div class='infowindow'>Here Rating</div>");
             infoBubble.addTab("<div class='infowindow'>Facilities</div>","<div class='infowindow'>Facilities: Ratp handicape parking bus ect...</div>");
