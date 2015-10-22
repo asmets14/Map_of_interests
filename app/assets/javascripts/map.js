@@ -25,7 +25,7 @@ function initMap() {
   });
 
   myloc = new google.maps.Marker({
-    clickable: false,
+    clickable: true,
     icon: new google.maps.MarkerImage('http://maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
                                         new google.maps.Size(22,22),
                                         new google.maps.Point(0,18),
@@ -38,7 +38,7 @@ function initMap() {
     var me = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
     myloc.setPosition(me);
     map.setOptions({zoom : 14, center: me});
-  })
+  });
   show_by_filter('all');
 }
 
@@ -69,18 +69,42 @@ function setMapNotOnAll(map, elem) {
 function addMarker(arrInfo) {
   var image;
   var marker;
+  var infoBubble = new InfoBubble;
 
   for (i = 0; i < arrInfo.length ; i++){
     marker = new google.maps.Marker({
+      clickable : true,
       position: { lat: arrInfo[i].latitude, lng: arrInfo[i].longitude },
      // icon: icons[arrInfo[i].category].icon,
       map: map,
-      category: arrInfo[i].category,
+      category: arrInfo[i].category
     });
+
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      return function() {
+        if (infoBubble.getMap() != null) {
+            infoBubble.close()
+            delete infoBubble;
+            infoBubble = new InfoBubble();
+          }
+          infoBubble.open(map, marker);
+          infoBubble.addTab("<div class='infowindow'>Info</div>",
+            '<div class="infowindow">'+
+            '<h1>'+ arrInfo[i].name +'</h1>'+
+            '<div id="bodywindow">'+
+            '<p> Address:&nbsp' + arrInfo[i].address + '</p>' +
+            '<p> Phone number: Ajouter telphone dans Db. arrInfo[i].phone </p>' +
+            '<p> website: link xxxx <p>'+
+            '</div>'+
+            '<p><img src="https://storage.googleapis.com/geolocalisation/photo1.jpg" alt="Mountain View" style="width:304px;height:228px;">'+
+            '</div>');
+            infoBubble.addTab("<div class='infowindow'>Rating</div>", "<div class='infowindow'>Here Rating</div>");
+            infoBubble.addTab("<div class='infowindow'>Facilities</div>","<div class='infowindow'>Facilities: Ratp handicape parking bus ect...</div>");
+      }
+    })(marker, i));
     markers.push(marker);
   }
 }
-
 
 function checkbox(id){
   if (document.getElementById(id).checked == true){
