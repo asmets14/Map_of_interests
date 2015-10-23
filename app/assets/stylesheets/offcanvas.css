@@ -1,30 +1,27 @@
 .text-right{
-  padding-top: 0px !important;
+  padding-top:    0px !important;
   padding-bottom: 4px !important;
 }
 
 a.nav-expander {
-  background: none repeat scroll 0 0 #000000;
-  color: #FFFFFF;
-  display: block;
-  font-size: 15px;
-  font-weight: 400;
-  height: 50px;
-  margin-right: 0;
-  padding: 1em 1.6em 2em;
-  position: absolute;
-  right: 0;
-  text-decoration: none;
-  text-transform: uppercase;
-  top: 0;
-  transition: right 0.3s ease-in-out 0s;
-  width: 130px;
-  z-index: 12;
+  background:         none repeat scroll 0 0 #000000;
+  color:              #FFFFFF;
+  display:            block;
+  font-size:          15px;
+  height:             65px;
+  width:              65px;
+  border-radius:      32px;
+  padding:            1em 1.6em 2em;
+  position:           absolute;
+  right:              5px;
+  top:                5px;
+  transition:         right 0.3s ease-in-out 0s;
+  z-index:            12;
 
-  transition: right 0.3s ease-in-out 0s;
+  transition:         right 0.3s ease-in-out 0s;
   -webkit-transition: right 0.3s ease-in-out 0s;
-  -moz-transition: right 0.3s ease-in-out 0s;
-  -o-transition: right 0.3s ease-in-out 0s;
+  -moz-transition:    right 0.3s ease-in-out 0s;
+  -o-transition:      right 0.3s ease-in-out 0s;
 }
 
 a.nav-expander:hover {
@@ -36,25 +33,25 @@ a.nav-expander.fixed {
 }
 
 .nav-expanded a.nav-expander.fixed {
-    right: 20em;
+  right: 20em;
 }
 
 nav {
-  background: #2d2f33;
-  display: block;
-  height: 100%;
-  overflow: auto;
-  position: fixed;
-  right: -20em;
-  font-size: 15px;
-  top: 0;
-  width: 20em;
-  z-index: 2000;
+  background:         #2d2f33;
+  display:            block;
+  height:             100%;
+  overflow:           auto;
+  position:           fixed;
+  right:              -20em;
+  font-size:          15px;
+  top:                0;
+  width:              20em;
+  z-index:            2000;
 
-  transition: right 0.3s ease-in-out 0s;
+  transition:         right 0.3s ease-in-out 0s;
   -webkit-transition: right 0.3s ease-in-out 0s;
-  -moz-transition: right 0.3s ease-in-out 0s;
-  -o-transition: right 0.3s ease-in-out 0s;
+  -moz-transition:    right 0.3s ease-in-out 0s;
+  -o-transition:      right 0.3s ease-in-out 0s;
 }
 
 .nav-expanded nav {
@@ -62,17 +59,17 @@ nav {
 }
 
 body.nav-expanded {
-  margin-left: 0em;
-  transition: right 0.4s ease-in-out 0s;
+  margin-left:        0em;
+  transition:         right 0.4s ease-in-out 0s;
   -webkit-transition: right 0.4s ease-in-out 0s;
-  -moz-transition: right 0.4s ease-in-out 0s;
-  -o-transition: right 0.4s ease-in-out 0s;
+  -moz-transition:    right 0.4s ease-in-out 0s;
+  -o-transition:      right 0.4s ease-in-out 0s;
 }
 
 #nav-close {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-weight: 300;
-  font-size: 23px;
+  font-family:   "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:   300;
+  font-size:     23px;
   padding-right: 10px;
 }
 
