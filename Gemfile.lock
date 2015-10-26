@@ -48,6 +48,11 @@ GEM
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (5.0.1.20140414130214)
+    aws-sdk (1.66.0)
+      aws-sdk-v1 (= 1.66.0)
+    aws-sdk-v1 (1.66.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
@@ -106,8 +111,11 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     mimemagic (0.3.0)
+    mini_portile (0.6.2)
     minitest (5.8.1)
     multi_json (1.11.2)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     paperclip (4.3.1)
       activemodel (>= 3.2.0)
@@ -189,6 +197,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  aws-sdk (~> 1.6)
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
   devise
