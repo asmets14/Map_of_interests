@@ -106,8 +106,8 @@ function addMarker(arrInfo) {
             '<p> website: link xxxx <p>'+
             '</div>'+
             '</div>');
-            infoBubble.addTab("<div class='infowindow'>Rating</div>", "<div class='infowindow'>Here Rating</div>");
-            infoBubble.addTab("<div class='infowindow'>Facilities</div>","<div class='infowindow'>Facilities: Ratp handicape parking bus ect...</div>");
+       //     infoBubble.addTab("<div class='infowindow'>Rating</div>", "<div class='infowindow'>Here Rating</div>");
+       //     infoBubble.addTab("<div class='infowindow'>Facilities</div>","<div class='infowindow'>Facilities: Ratp handicape parking bus ect...</div>");
       }
     })(marker, i));
     markers.push(marker);
