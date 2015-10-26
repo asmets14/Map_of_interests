@@ -1,11 +1,11 @@
 ﻿Id,Name,Category,Address,Longitude,Latitude,Created at,Updated at,Thumbnail file name,Thumbnail content type,Thumbnail file size,Thumbnail updated at
-42,Musée Grévin,Museum,"10 Boulevard Montmartre, 75009 Paris",2.3421599,48.8718236,2015-10-21 14:59:12 UTC,2015-10-26 14:09:48 UTC,musee_grevin.jpg,image/jpeg,111415,2015-10-26 14:09:48 UTC
-41,Musée du Parfum Fragonard,Museum,"9 Rue Scribe, 75009 Paris",2.330266,48.871493,2015-10-21 14:58:26 UTC,2015-10-21 14:58:26 UTC,,,,
-40,Musée Jacquemart-André,Museum,"158 Boulevard Haussmann, 75008 ",2.3107324,48.8750259,2015-10-21 14:57:57 UTC,2015-10-21 14:57:57 UTC,,,,
-39,Musée de l'érotisme,Museum,"72 Boulevard de Clichy, 75018 Paris",2.3337515,48.88358789999999,2015-10-21 14:57:27 UTC,2015-10-21 14:59:38 UTC,,,,
-38,Musée national Jean-Jacques Henner,Museum," 43 Avenue de Villiers, 75017 Paris",2.3076036,48.8829357,2015-10-21 14:57:04 UTC,2015-10-21 14:57:04 UTC,,,,
-37,Musée de la Vie romantique,Museum,"16 Rue Chaptal, 75009 Paris",2.3334477,48.8810988,2015-10-21 14:55:48 UTC,2015-10-21 14:55:48 UTC,,,,
-36,Le Musée de Montmartre,Museum,"14 Rue Cortot, 75018 Paris",2.3406265,48.8881166,2015-10-21 14:55:17 UTC,2015-10-21 14:55:17 UTC,,,,
+42,Musée Grévin,Museum,"10 Boulevard Montmartre, 75009 Paris",2.3421599,48.8718236,2015-10-21 14:59:12 UTC,2015-10-26 15:05:34 UTC,musee_grevin.jpg,image/jpeg,111415,2015-10-26 15:05:34 UTC
+41,Musée du Parfum Fragonard,Museum,"9 Rue Scribe, 75009 Paris",2.330266,48.871493,2015-10-21 14:58:26 UTC,2015-10-26 15:07:26 UTC,musee_parfum.jpg,image/jpeg,212975,2015-10-26 15:07:26 UTC
+40,Musée Jacquemart-André,Museum,"158 Boulevard Haussmann, 75008 ",2.3107324,48.8750259,2015-10-21 14:57:57 UTC,2015-10-26 15:11:21 UTC,musee_jacquemart_andre.jpg,image/jpeg,28910,2015-10-26 15:11:21 UTC
+39,Musée de l'érotisme,Museum,"72 Boulevard de Clichy, 75018 Paris",2.3337515,48.8835879,2015-10-21 14:57:27 UTC,2015-10-26 15:12:55 UTC,musee_erotisme.jpg,image/jpeg,61442,2015-10-26 15:12:55 UTC
+38,Musée national Jean-Jacques Henner,Museum," 43 Avenue de Villiers, 75017 Paris",2.3076036,48.8829357,2015-10-21 14:57:04 UTC,2015-10-26 15:28:55 UTC,musee-henner.jpg,image/jpeg,212042,2015-10-26 15:28:54 UTC
+37,Musée de la Vie romantique,Museum,"16 Rue Chaptal, 75009 Paris",2.3334477,48.8810988,2015-10-21 14:55:48 UTC,2015-10-26 15:30:42 UTC,MuseeDeLaVieRomantique.jpg,image/jpeg,2052769,2015-10-26 15:30:41 UTC
+36,Le Musée de Montmartre,Museum,"14 Rue Cortot, 75018 Paris",2.3406265,48.8881166,2015-10-21 14:55:17 UTC,2015-10-26 16:38:30 UTC,musee_monmartre.JPG,image/jpeg,501665,2015-10-26 16:38:29 UTC
 35,Théâtre de l'Atalante,Theatre," 10 Place Charles Dullin,75018 Paris",2.3427014,48.8833894,2015-10-21 14:54:25 UTC,2015-10-21 14:54:25 UTC,,,,
 34,Théâtre National de Chaillot,Theatre,"1 Place du Trocadéro,75016 Paris",2.2882743,48.8628911,2015-10-21 14:53:36 UTC,2015-10-21 14:53:36 UTC,,,,
 33,Theatre de Bellville,Theatre,"94 Rue du Faubourg du Temple,75011 Paris",2.374393,48.870894,2015-10-21 14:52:38 UTC,2015-10-21 14:52:38 UTC,,,,
@@ -17,21 +17,21 @@
 27,O'Paris,Bar,1 rue des Envierges  75020 paris,2.3858576,48.8715953,2015-10-21 14:42:41 UTC,2015-10-21 14:42:41 UTC,,,,
 26,Mini pong bar,Bar,64 rue Jean-Baptiste Pigalle 75009 paris,2.336863,48.8817311,2015-10-21 14:41:17 UTC,2015-10-21 14:45:32 UTC,,,,
 25,Baranaan,Bar,7 rue du Faubourg Saint-Martin  75010  Paris ,2.355804,48.8695665,2015-10-21 14:40:15 UTC,2015-10-21 14:40:15 UTC,,,,
-24,Gravity bar,Bar,44 rue des Vinaigriers  75010  Paris ,2.3608823,48.87339069999999,2015-10-21 14:39:27 UTC,2015-10-21 14:39:27 UTC,,,,
+24,Gravity bar,Bar,44 rue des Vinaigriers  75010  Paris ,2.3608823,48.8733907,2015-10-21 14:39:27 UTC,2015-10-21 14:39:27 UTC,,,,
 23,Cafe A,Cafe,"148 Rue du Faubourg Saint-Martin, 75010 Paris",2.3599864,48.875395,2015-10-21 14:37:10 UTC,2015-10-21 14:37:10 UTC,,,,
 22,Pari's Cafe,Cafe,"174 Avenue de Clichy, 75017 Paris",2.3176101,48.8926932,2015-10-21 14:36:13 UTC,2015-10-21 14:36:13 UTC,,,,
 21,Cafe de la paix,Cafe," 5 Place de l'Opéra, 75009 Paris",2.331738,48.8709439,2015-10-21 14:35:34 UTC,2015-10-21 14:37:22 UTC,,,,
 20,Hard rock Cafe Paris,Cafe,"14 Boulevard Montmartre, 75009 Paris",2.341614,48.8720546,2015-10-21 14:34:46 UTC,2015-10-21 14:34:46 UTC,,,,
-19,Le petit cafe,Cafe," 6 Rue Descartes, 75005 Paris",2.3484273,48.84714169999999,2015-10-21 14:34:04 UTC,2015-10-21 14:34:04 UTC,,,,
+19,Le petit cafe,Cafe," 6 Rue Descartes, 75005 Paris",2.3484273,48.8471417,2015-10-21 14:34:04 UTC,2015-10-21 14:34:04 UTC,,,,
 16,A Toutes Faims Pizzeria,Restaurant,"113 Avenue du General de Gaulle, 93330 Neuilly-sur-Marne, France",2.5341196,48.8582563,2015-10-21 14:19:32 UTC,2015-10-21 14:19:32 UTC,,,,
 15,La table du 11,Restaurant,"11, Rue Saint Honore, 78000, Versailles, France",2.1255242,48.7981428,2015-10-21 14:18:37 UTC,2015-10-21 14:32:57 UTC,,,,
 14,Roomies,Restaurant,"4 Rue du Cygne, 75001 Paris, France",2.3497777,48.8631147,2015-10-21 14:17:25 UTC,2015-10-21 14:17:25 UTC,,,,
 13,Bistrotteurs,Restaurant,"9, rue Decres, 75014 Paris, France",2.3148763,48.8327781,2015-10-21 14:16:45 UTC,2015-10-21 14:16:45 UTC,,,,
 12,Seb'on,Restaurant,"62 rue d'Orsel, 75018 Paris, France",2.3404727,48.8835248,2015-10-21 14:15:35 UTC,2015-10-21 14:15:35 UTC,,,,
 11,Epicure,Restaurant,"112 rue du Faubourg Saint Honoré, 75008 Paris, France",2.314999,48.8718282,2015-10-21 14:14:48 UTC,2015-10-21 14:14:48 UTC,,,,
-10,Musee du Chocolat,Museum,"28 Boulevard de Bonne Nouvelle, 75010 Paris",2.3502028,48.87068800000001,2015-10-20 09:41:36 UTC,2015-10-21 14:14:35 UTC,,,,
-8,Theatre des Bouffes-Parisiens,Theatre,"4 Rue Monsigny, 75002 Paris",2.3354035,48.86839029999999,2015-10-20 07:17:13 UTC,2015-10-20 07:17:13 UTC,,,,
-5,Quai branly,Museum,"37 Quai Branly, 75007 Paris",2.297441000000001,48.861899,2015-10-16 21:27:48 UTC,2015-10-16 21:27:48 UTC,,,,
+10,Musee du Chocolat,Museum,"28 Boulevard de Bonne Nouvelle, 75010 Paris",2.3502028,48.870688,2015-10-20 09:41:36 UTC,2015-10-21 14:14:35 UTC,,,,
+8,Theatre des Bouffes-Parisiens,Theatre,"4 Rue Monsigny, 75002 Paris",2.3354035,48.8683903,2015-10-20 07:17:13 UTC,2015-10-20 07:17:13 UTC,,,,
+5,Quai branly,Museum,"37 Quai Branly, 75007 Paris",2.297441,48.861899,2015-10-16 21:27:48 UTC,2015-10-16 21:27:48 UTC,,,,
 4,Metropolitane,Club,"Pondorly, 94150 Rungis",2.349433,48.758711,2015-10-16 12:38:34 UTC,2015-10-16 12:38:52 UTC,,,,
 3,theatre Du chatelet,Theatre,"1 Place du Châtelet, 75001 France",2.3467545,48.8575996,2015-10-16 07:23:20 UTC,2015-10-16 07:23:20 UTC,,,,
 2,Musee orsay,Museum,Quai d'orsay paris,2.3108945,48.8624213,2015-10-15 08:47:49 UTC,2015-10-15 08:47:49 UTC,,,,
