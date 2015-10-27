@@ -1,4 +1,6 @@
 var map;
+var circle;
+var homeposition;
 var markers = [];
 var iconBase = 'https://storage.googleapis.com/geolocalisation/';
 var icons = {
@@ -44,9 +46,9 @@ function initMap() {
   })
 
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
-    var me = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-    myloc.setPosition(me);
-    map.setOptions({zoom : 14, center: me});
+    homeposition = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+    myloc.setPosition(homeposition);
+    map.setOptions({zoom : 14, center: homeposition});
   });
   show_by_filter('all');
 }
@@ -57,16 +59,9 @@ function show_by_filter(elem){
     url: '/interests',
     data : 'category='+elem,
     success: function (data) {
-      console.log(data[1]);
       addMarker(data);
     }
   })
-}
-
-function setMapOnAll(map) {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(map);
-  }
 }
 
 function setMapNotOnAll(map, elem) {
@@ -116,6 +111,20 @@ function addMarker(arrInfo) {
   }
 }
 
+function createCircle(map){
+  circle = new google.maps.Circle({
+      strokeColor: '#FE9C06',
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: '#FE9C06',
+      fillOpacity: 0.35,
+      map: map,
+      center: homeposition,
+      radius: 700
+  });
+  map.setOptions({zoom : 15, center: homeposition});
+}
+
 function checkbox(id){
   if (document.getElementById(id).checked == true){
     $('.'+id).show();
@@ -124,5 +133,13 @@ function checkbox(id){
   else{
     setMapNotOnAll(null, id);
     $('.'+ id).hide();
+  }
+}
+
+function checkCircle(id){
+  if (document.getElementById(id).checked == true)
+    createCircle(map, null );
+  else{
+    circle.setMap(null);
   }
 }
