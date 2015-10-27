@@ -28,6 +28,9 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 gem 'geocoder'
 
+gem "paperclip", "~> 4.3"
+gem 'aws-sdk', '~> 1.6'
+
 group :development do
   gem 'spring'
   gem 'sqlite3'

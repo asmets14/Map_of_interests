@@ -57,7 +57,8 @@ function show_by_filter(elem){
     url: '/interests',
     data : 'category='+elem,
     success: function (data) {
-      addMarker(data.message);
+      console.log(data[1]);
+      addMarker(data);
     }
   })
 }
@@ -103,6 +104,7 @@ function addMarker(arrInfo) {
             '<div id="bodywindow">'+
             '<p> Address:&nbsp' + arrInfo[i].address + '</p>' +
             '<p> Phone number: Ajouter telphone dans Db. arrInfo[i].phone </p>' +
+            '<p><img src=' + arrInfo[i].thumbnail_url +' alt="Smiley face"> </p>' +
             '<p> website: link xxxx <p>'+
             '</div>'+
             '</div>');

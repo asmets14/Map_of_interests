@@ -11,8 +11,6 @@ class InterestsController < ApplicationController
     else
       @interest = Interest.where(category: params[:category].capitalize)
     end
-    data = {:message => @interest}
-    render :json => data, :status => :ok
   end
 
   def fullscreen
