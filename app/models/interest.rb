@@ -8,7 +8,7 @@ class Interest < ActiveRecord::Base
   validates :longitude, presence: true
   has_attached_file :thumbnail,
                     styles: { medium: "300x300#", thumb: "100x100#" } ,
-                    default_url: ActionController::Base.helpers.asset_path("missing.png")
+                    default_url: 'https://storage.googleapis.com/geolocalisation/missing.png'
   validates_attachment_content_type :thumbnail, content_type: /\Aimage\/.*\Z/
 
   def activate_geocoder
