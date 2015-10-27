@@ -4,5 +4,7 @@ json.array! @interest do |i|
   json.longitude i.longitude
   json.latitude i.latitude
   json.category i.category
+  json.phone i.phone
+  json.website i.website
   json.thumbnail_url i.thumbnail.url(:medium)
 end
