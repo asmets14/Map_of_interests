@@ -160,7 +160,7 @@ function createCircle(map){
 function checkbox(id){
   if (document.getElementById(id).checked == true){
     $('.'+id).show();
-    setMapNotOnAll(map, id);
+    show_by_filter(id);
   }
   else{
     setMapNotOnAll(null, id);
