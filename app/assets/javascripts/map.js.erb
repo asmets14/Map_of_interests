@@ -45,12 +45,44 @@ function initMap() {
     map: map
   })
 
+//  show_by_filter('all');
+  var elem;
+  var all_theme;
+  var vars;
+  var i;
+  var j;
+  var query = window.location.search.substring(1);
+  var param = false;
+
+  if(query){
+  vars = query.split("&");
+  for (i = 0; i < vars.length; i++) {
+    param = true;
+    all_theme = vars[i].split("=");
+    elem = all_theme[1].split(",");
+      if ( all_theme[0]  == 'category'){
+        for (j = 0; j< elem.length; j++){
+          show_by_filter(elem[j]);
+          document.getElementById(elem[j]).checked = true;
+        }
+      }
+      else if (all_theme[0] == 'zoom'){
+        var number =parseInt(elem[0]);
+        map.setZoom(number);
+      }
+      else if ((all_theme[0] == 'latlng') && (elem.length== 2)){
+        var new_center = new google.maps.LatLng(elem[0], elem[1]);
+        map.setCenter(new_center);
+      }
+    }
+  }
+
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
     homeposition = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
     myloc.setPosition(homeposition);
-    map.setOptions({zoom : 14, center: homeposition});
+    if(param == false)
+      map.setOptions({zoom : 14, center: homeposition});
   });
-  show_by_filter('all');
 }
 
 function show_by_filter(elem){

@@ -1,11 +1,13 @@
 <script type='text/javascript'>
   google.maps.event.addDomListener(window, 'load', initMap);
+
+
 </script>
 <style>
   #map{
     height:100%;
     margin:0;
-  }
+}
 </style>
 
 <div class="fullscreen">
@@ -14,10 +16,11 @@
       <li class="text-right"><a href="#" id="nav-close">X</a></li>
       <% @category.each do |c| %>
         <li><a href="#">
-          <label><input type="checkbox" id='<%= c %>' onclick="checkbox('<%= c %>')" checked> <%= c %></label>
+          <label><input type="checkbox"  id='<%= c %>' onclick="checkbox('<%= c %>')" > <%= c %></label>
         </a></li>
       <% end %>
       <li><a><label><input type="checkbox" id='circle' onclick="checkCircle('circle')" > Within 10 min</label></a></li>
+    </form>
     </ul>
   </nav>
 

@@ -13,6 +13,14 @@ class InterestsController < ApplicationController
     end
   end
 
+  def create
+    @test = 'lol'
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end
+  end
+
   def fullscreen
     @category = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"]
     @interest = Interest.all
