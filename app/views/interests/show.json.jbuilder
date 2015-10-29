@@ -7,4 +7,5 @@ json.array! @interest do |i|
   json.phone i.phone
   json.website i.website
   json.thumbnail_url i.thumbnail.url(:medium)
+  json.thubmail_name i.thumbnail_file_name
 end

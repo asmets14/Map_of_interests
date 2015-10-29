@@ -114,8 +114,10 @@ function setMapNotOnAll(map, elem) {
 }
 
 function addMarker(arrInfo) {
-  var image;
   var marker;
+  var phone;
+  var website;
+  var thumbnail;
   var infoBubble = new InfoBubble;
 
   for (i = 0; i < arrInfo.length ; i++){
@@ -132,21 +134,27 @@ function addMarker(arrInfo) {
         if (infoBubble.getMap() != null) {
             infoBubble.close()
             delete infoBubble;
-            infoBubble = new InfoBubble();
-          }
-          infoBubble.open(map, marker);
-          infoBubble.addTab("<div class='infowindow'>Info</div>",
-            '<div class="infowindow">'+
-            '<h1>'+ arrInfo[i].name +'</h1>'+
-            '<div id="bodywindow">'+
-            '<p> Address:&nbsp' + arrInfo[i].address + '</p>' +
-            '<p> Phone number:' + arrInfo[i].phone +' </p>' +
-            '<p><img src=' + arrInfo[i].thumbnail_url +' alt="Smiley face"> </p>' +
-            '<p> website:' + arrInfo[i].website +'<p>'+
-            '</div>'+
-            '</div>');
-       //     infoBubble.addTab("<div class='infowindow'>Rating</div>", "<div class='infowindow'>Here Rating</div>");
-       //     infoBubble.addTab("<div class='infowindow'>Facilities</div>","<div class='infowindow'>Facilities: Ratp handicape parking bus ect...</div>");
+            infoBubble = new InfoBubble({
+            minWidth: 350,
+            minHeight: 150
+            });
+        }
+        phone = '<p>' + (arrInfo[i].phone ? 'Phone number : ' + arrInfo[i].phone +' </p>' : '</p>');
+        website = '<p>' + (arrInfo[i].website ? 'website : <a href='+ '"' + arrInfo[i].website +'">' + arrInfo[i].website + '</a>' : '</p>')
+        thumbnail = '<p>' + ((arrInfo[i].thumbnail_url.match("missing.png")) == null ? '<img src=' + arrInfo[i].thumbnail_url + 'alt="image of interest"> </p>' : '</p>');
+        infoBubble.open(map, marker);
+        infoBubble.addTab("<div class='infowindow'>Info</div>",
+          '<div class="infowindow">'+
+          '<h1>'+ arrInfo[i].name +'</h1>'+
+          '<div id="bodywindow">'+
+          '<p> Address:&nbsp' + arrInfo[i].address + '</p>' +
+          phone +
+          thumbnail +
+          website +
+          '</div>'+
+          '</div>');
+     //     infoBubble.addTab("<div class='infowindow'>Rating</div>", "<div class='infowindow'>Here Rating</div>");
+     //     infoBubble.addTab("<div class='infowindow'>Facilities</div>","<div class='infowindow'>Facilities: Ratp handicape parking bus ect...</div>");
       }
     })(marker, i));
     markers.push(marker);
