@@ -58,7 +58,6 @@ function initMap() {
   if(query){
   vars = query.split("&");
   for (i = 0; i < vars.length; i++) {
-    param = true;
     all_theme = vars[i].split("=");
     elem = all_theme[1].split(",");
       if ( all_theme[0]  == 'category'){
@@ -68,10 +67,12 @@ function initMap() {
         }
       }
       else if (all_theme[0] == 'zoom'){
+        param = true;
         var number =parseInt(elem[0]);
         map.setZoom(number);
       }
       else if ((all_theme[0] == 'latlng') && (elem.length== 2)){
+        param = true;
         var new_center = new google.maps.LatLng(elem[0], elem[1]);
         map.setCenter(new_center);
       }
