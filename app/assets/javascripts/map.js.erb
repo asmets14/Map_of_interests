@@ -51,6 +51,7 @@ function initMap() {
   var vars;
   var i;
   var j;
+  var cat  = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"]
   var query = window.location.search.substring(1);
   var param = false;
 
@@ -74,6 +75,15 @@ function initMap() {
         var new_center = new google.maps.LatLng(elem[0], elem[1]);
         map.setCenter(new_center);
       }
+    }
+  }
+
+  else{
+    i = 0;
+    show_by_filter('all');
+    while(cat[i]){
+      document.getElementById(cat[i]).checked = true;
+      i++;
     }
   }
 
