@@ -8,8 +8,12 @@ ActiveAdmin.register Interest do
     column :address
     column :phone
     column :website
-    column :thumbnail do |event|
-      image_tag(event.thumbnail.url(:thumb))
+    column   :thumbnail do |event|
+      if event.thumbnail_file_name.blank?
+        "No picture yet"
+      else
+        image_tag(event.thumbnail.url(:thumb))
+      end
     end
     column :category
     actions
@@ -21,8 +25,8 @@ ActiveAdmin.register Interest do
       row :address
       row :phone
       row :website
-      row :longitude
       row :latitude
+      row :thumbnail_file_name
       row :thumbnail do |event|
         image_tag(event.thumbnail.url(:thumb))
       end
