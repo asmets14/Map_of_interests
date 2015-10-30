@@ -88,13 +88,7 @@ function initMap() {
   }
 
   else{
-    i = 0;
-    var cat  = ["theatre", "club", "museum", "restaurant","bar", "cafe"];
     show_by_filter('category=all');
-    while(cat[i]){
-      document.getElementById(cat[i]).checked = true;
-      i++;
-    }
   }
 
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {

@@ -1,5 +1,5 @@
 ActiveAdmin.register Interest do
-  permit_params :name, :category, :longitude, :latitude, :address, :thumbnail, :phone, :website, :tag_list
+  permit_params :name, :category, :longitude, :latitude, :address, :thumbnail, :phone, :website, :tag_list, :published
 
   index do
     selectable_column
@@ -17,6 +17,7 @@ ActiveAdmin.register Interest do
     end
     column :category
     column :tag_list
+    column :published
     actions
   end
 
@@ -32,6 +33,7 @@ ActiveAdmin.register Interest do
       row :thumbnail do |event|
         image_tag(event.thumbnail.url(:thumb))
       end
+      row :published
     end
   end
 
@@ -44,6 +46,7 @@ ActiveAdmin.register Interest do
       input :website
       input :thumbnail
       input :tag_list
+      input :published
       submit
     end
   end

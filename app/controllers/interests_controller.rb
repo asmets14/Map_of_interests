@@ -10,7 +10,7 @@ class InterestsController < ApplicationController
       @interest = Interest.tagged_with(params[:tag], :any => true)
     elsif !(params[:category].nil?)
       if params[:category] == 'all'
-        @interest = Interest.all
+        @interest = Interest.published
       else
         category_title = params[:category].split(',')
         category_title.each do | c |
