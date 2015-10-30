@@ -27,8 +27,8 @@ ActiveAdmin.register Interest do
       row :phone
       row :website
       row :latitude
+      row :longitude
       row :tag_list
-      row :thumbnail_file_name
       row :thumbnail do |event|
         image_tag(event.thumbnail.url(:thumb))
       end
