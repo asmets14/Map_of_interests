@@ -8,4 +8,5 @@ json.array! @interest do |i|
   json.website i.website
   json.thumbnail_url i.thumbnail.url(:medium)
   json.thubmail_name i.thumbnail_file_name
+  json.tag_list i.tag_list
 end

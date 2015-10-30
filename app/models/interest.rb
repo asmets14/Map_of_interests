@@ -1,5 +1,6 @@
 class Interest < ActiveRecord::Base
   CATEGORY = %w(Theatre Club Museum Restaurant Bar Cafe)
+  acts_as_taggable
   geocoded_by :address
   before_validation :activate_geocoder
   validates :address, presence: true

@@ -1,20 +1,26 @@
 class InterestsController < ApplicationController
   def index
-    @category = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"]
+    @category = ["theatre", "club", "museum", "restaurant" ,"bar","cafe"]
     @interest = Interest.all
   end
 
   def show
-    @category = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"]
-    if params[:category] == 'all'
-      @interest = Interest.all
-    else
-      @interest = Interest.where(category: params[:category].capitalize)
+    @category = ["theatre", "club", "museum", "restaurant" ,"bar","cafe"]
+    if !(params[:tag].nil?)
+      @interest = Interest.tagged_with(params[:tag], :any => true)
+    elsif !(params[:category].nil?)
+      if params[:category] == 'all'
+        @interest = Interest.all
+      else
+        category_title = params[:category].split(',')
+        category_title.each do | c |
+           @interest = Interest.where(category: c.capitalize)
+        end
+      end
     end
   end
 
   def create
-    @test = 'lol'
     respond_to do |format|
       format.html { redirect_to root_path }
       format.js
@@ -22,7 +28,7 @@ class InterestsController < ApplicationController
   end
 
   def fullscreen
-    @category = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"]
+    @category = ["theatre", "club", "museum", "restaurant" ,"bar","cafe"]
     @interest = Interest.all
   end
 end

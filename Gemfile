@@ -30,6 +30,7 @@ gem 'geocoder'
 
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '~> 1.6'
+gem 'acts-as-taggable-on'
 
 group :development do
   gem 'spring'
