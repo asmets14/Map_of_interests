@@ -1,6 +1,14 @@
 ActiveAdmin.register Interest do
   permit_params :name, :category, :longitude, :latitude, :address, :thumbnail, :phone, :website, :tag_list, :published
 
+  batch_action :published do |id|
+    Interest.find(id).each do |e|
+      e.published =  true
+      e.save
+    end
+    redirect_to collection_path, notice: "All elements are published"
+  end
+
   index do
     selectable_column
     column :id
