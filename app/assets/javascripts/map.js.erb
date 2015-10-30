@@ -58,6 +58,7 @@ function initMap() {
   var all_theme;
   var vars;
   var i;
+  var cat  = ["theatre", "club", "museum", "restaurant" ,"bar","cafe"];
   var query = window.location.search.substring(1);
   var param = false;
 
@@ -88,7 +89,11 @@ function initMap() {
   }
 
   else{
+    i = 0;
     show_by_filter('category=all');
+    while(cat[i]){
+      document.getElementById(cat[i]).checked = true;
+      i++;
   }
 
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
