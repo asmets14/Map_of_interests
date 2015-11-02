@@ -58,7 +58,7 @@ function initMap() {
   var all_theme;
   var vars;
   var i;
-  var cat  = ["theatre", "club", "museum", "restaurant" ,"bar","cafe"];
+  var cat  = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"];
   var query = window.location.search.substring(1);
   var param = false;
 
@@ -191,6 +191,7 @@ function checkbox(id){
     show_by_filter('category='+ id);
   }
   else{
+    console.log(id)
     setMapNotOnAll(null, id);
     $('.'+ id).hide();
   }

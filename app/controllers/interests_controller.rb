@@ -1,12 +1,12 @@
 class InterestsController < ApplicationController
   http_basic_authenticate_with name: "admin", password: "secret"
   def index
-    @category = ["theatre", "club", "museum", "restaurant" ,"bar","cafe"]
+    @category = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"]
     @interest = Interest.all
   end
 
   def show
-    @category = ["theatre", "club", "museum", "restaurant" ,"bar","cafe"]
+    @category = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"]
     if !(params[:tag].nil?)
       @interest = Interest.tagged_with(params[:tag], :any => true)
     elsif !(params[:category].nil?)
@@ -29,7 +29,7 @@ class InterestsController < ApplicationController
   end
 
   def fullscreen
-    @category = ["theatre", "club", "museum", "restaurant" ,"bar","cafe"]
+    @category = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"]
     @interest = Interest.all
   end
 end
