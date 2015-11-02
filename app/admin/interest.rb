@@ -9,6 +9,14 @@ ActiveAdmin.register Interest do
     redirect_to collection_path, notice: "All elements are published"
   end
 
+  batch_action :unpublished do |id|
+    Interest.find(id).each do |e|
+      e.published =  false
+      e.save
+    end
+    redirect_to collection_path, notice: "All elements are unpublished"
+  end
+
   index do
     selectable_column
     column :id

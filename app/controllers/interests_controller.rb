@@ -1,4 +1,5 @@
 class InterestsController < ApplicationController
+  http_basic_authenticate_with name: "admin", password: "secret"
   def index
     @category = ["theatre", "club", "museum", "restaurant" ,"bar","cafe"]
     @interest = Interest.all
@@ -14,7 +15,7 @@ class InterestsController < ApplicationController
       else
         category_title = params[:category].split(',')
         category_title.each do | c |
-           @interest = Interest.where(category: c.capitalize)
+          @interest = Interest.where(category: c.capitalize)
         end
       end
     end
