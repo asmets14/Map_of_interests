@@ -6,8 +6,8 @@ html, body{
   position:         absolute;
   height:           100%;
   width:            100%;
-  background-color: #3C3C3C !important;
-  color:            white !important;
+  background-color: #A7E39F !important;
+  color:            black !important;
 }
 
 .title{
@@ -48,4 +48,20 @@ html, body{
   .fa-bars{
     line-height: 1.85em;
   }
+  #nav-close{
+    padding-right: 0px;
+  }
 }
+
+.devise-page{
+  margin-top: 15px;
+  h2{
+    color: black;
+  }
+  .btn-info{
+    color: #fff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+  }
+}
+

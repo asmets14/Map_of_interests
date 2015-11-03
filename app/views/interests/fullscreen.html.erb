@@ -11,7 +11,11 @@
 <div class="fullscreen">
   <nav>
     <ul class="list-unstyled main-menu">
-      <li class="text-right"><a href="#" id="nav-close">X</a></li>
+      <li class='text-right'>
+        <span> Signed as <%= current_user.email %>&nbsp;&nbsp;</span>
+        <a href="#" id="nav-close" class="text-right">X</a>
+      </li>
+      <li class='text-right'><%= link_to 'Log out',destroy_user_session_path, :method => :delete %></li>
       <% @category.each do |c| %>
         <li><a href="#">
           <label><input type="checkbox"  id='<%= c %>' onclick="checkbox('<%= c %>')" > <%= c %></label>
