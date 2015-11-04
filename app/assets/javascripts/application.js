@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require map
 //= require offcanvas
+//= require bootstrap
 //= require_tree .

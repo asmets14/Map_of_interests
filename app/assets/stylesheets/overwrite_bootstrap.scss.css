@@ -1,3 +1,7 @@
 label{
   all:unset !important;
 }
+
+.container-fluid{
+  all: unset !important;
+}
