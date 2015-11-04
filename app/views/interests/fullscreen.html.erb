@@ -12,16 +12,20 @@
   <nav>
     <ul class="list-unstyled main-menu">
       <li class='text-right'>
-        <span> Signed as <%= current_user.email %>&nbsp;&nbsp;</span>
         <a href="#" id="nav-close" class="text-right">X</a>
       </li>
-      <li class='text-right'><%= link_to 'Log out',destroy_user_session_path, :method => :delete %></li>
       <% @category.each do |c| %>
         <li><a href="#">
           <label><input type="checkbox"  id='<%= c %>' onclick="checkbox('<%= c %>')" > <%= c %></label>
         </a></li>
       <% end %>
       <li><a><label><input type="checkbox" id='circle' onclick="checkCircle('circle')" > Within 10 min</label></a></li>
+      <% if !current_user %>
+        <li class="sign-up-in"> Do you want custumize your map? </br>  <%= link_to 'Sign up', new_user_registration_path %></li>
+        <li class="little-sign-in"><%= link_to 'sign in', new_user_session_path %></li>
+      <% else %>
+        <li class="sign-up-in"> Signed as <%= current_user.email %> </br> <%= link_to 'Log out',destroy_user_session_path, :method => :delete %></li>
+      <% end %>
     </form>
     </ul>
   </nav>
