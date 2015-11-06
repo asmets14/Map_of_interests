@@ -21,10 +21,14 @@
       <% end %>
       <li><a><label><input type="checkbox" id='circle' onclick="checkCircle('circle')" > Within 10 min</label></a></li>
       <% if !current_user %>
-        <li class="sign-up-in"> Do you want custumize your map? </br>  <%= link_to 'Sign up', new_user_registration_path %></li>
-        <li class="little-sign-in"><%= link_to 'sign in', new_user_session_path %></li>
+        <li class='question-signup'> Save your preferences ! </br>
+          <button type="button" class="btn sign-up-btn">
+            <%= link_to 'Sign up', new_user_registration_path %></li>
+          </button>
+      <li class='little-sign-in-out'><%= link_to 'sign in', new_user_session_path%></li>
       <% else %>
-        <li class="sign-up-in"> Signed as <%= current_user.email %> </br> <%= link_to 'Log out',destroy_user_session_path, :method => :delete %></li>
+        <li class="sign-up-in"> Signed as <%= current_user.email %></li>
+        <li class='little-sign-in-out'>  <%= link_to 'Sign out',destroy_user_session_path, :method => :delete %></li>
       <% end %>
     </form>
     </ul>
