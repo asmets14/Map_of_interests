@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require map
+//= require flash_message
 //= require offcanvas
 //= require bootstrap
 //= require_tree .
