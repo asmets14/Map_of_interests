@@ -1,4 +1,7 @@
 <div class='container devise-page'>
+  <div class='back-to-map-link'>
+    <%= link_to 'Back to map', root_path,  method: :get %>
+  </div>
   <h2>Log in</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
