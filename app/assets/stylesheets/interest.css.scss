@@ -23,9 +23,7 @@ html, body{
 }
 
 #map{
-  width:      100%;
-  height:     480px;
-  text-align: center;
+  width: 100%;
 }
 
 .checkbox-container{
@@ -39,7 +37,7 @@ html, body{
 }
 
 .infowindow{
-  color:black;
+  color: black;
   h1{
     color: #3C3C3C;
   }
@@ -61,7 +59,7 @@ html, body{
   margin-top: 15px;
   text-align: center;
   h2{
-    color:      #9d1535;
+    color: #9d1535;
   }
   .back-to-map-link{
     text-align: left !important;
@@ -77,7 +75,7 @@ html, body{
     font-weight:  normal;
   }
   .devise-submit:hover{
-    background :  #FFF07A !important;
+    background : #FFF07A !important;
   }
 }
 
