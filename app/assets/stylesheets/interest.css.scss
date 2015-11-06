@@ -6,8 +6,8 @@ html, body{
   position:         absolute;
   height:           100%;
   width:            100%;
-  background-color: #A7E39F !important;
-  color:            black !important;
+  background-color: rgb(255, 175, 79)!important;
+  color:            #815D3C !important;
 }
 
 .title{
@@ -55,13 +55,30 @@ html, body{
 
 .devise-page{
   margin-top: 15px;
+  text-align: center;
   h2{
-    color: black;
+    color:      #9d1535;
   }
-  .btn-info{
-    color:            #fff;
-    background-color: #5bc0de;
-    border-color:     #46b8da;
+  .devise-submit{
+    color:        #815D3C;
+    background :  #FFF07A;
+    border-color: #FFFAC0;
+    text-shadow:  none !important;
+    margin-top :  15px;
+    padding:      6px 60px;
+    font-size:    17px;
+    font-weight:  normal;
   }
+  .devise-submit:hover{
+    background :  #FFF07A !important;
+  }
+}
+
+.first{
+  margin-top: 15px;
+}
+
+.center{
+  text-align: center;
 }
 

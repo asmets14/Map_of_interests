@@ -6,15 +6,14 @@
   text-align: center !important;
 }
 
-.sign-up-in{
+.sign-in{
   background-color: #fff07A;
   text-align:       center;
-  position:         relative;
-  top:              50px;
-  height:           100px;
-  padding-top:      35px !important;
   color:            #815D3C;
+  margin-top:       35px;
+  border-radius:    10px;
 }
+
 
 .little-sign-in-out{
   font-size:  15px !important;

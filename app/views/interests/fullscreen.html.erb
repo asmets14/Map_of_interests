@@ -27,7 +27,7 @@
           </button>
       <li class='little-sign-in-out'><%= link_to 'sign in', new_user_session_path%></li>
       <% else %>
-        <li class="sign-up-in"> Signed as <%= current_user.email %></li>
+        <li class="sign-in"> Signed as <%= current_user.email %></li>
         <li class='little-sign-in-out'>  <%= link_to 'Sign out',destroy_user_session_path, :method => :delete %></li>
       <% end %>
     </form>
