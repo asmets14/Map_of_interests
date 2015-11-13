@@ -3,6 +3,7 @@ var circle;
 var homeposition;
 var markers = [];
 var directionsDisplay = new google.maps.DirectionsRenderer;
+var cat  = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"];
 var infoBubble;
 var iconBase = 'https://storage.googleapis.com/geolocalisation/';
 var icons = {
@@ -51,7 +52,6 @@ function initMap() {
   var all_theme;
   var vars;
   var i;
-  var cat  = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"];
   var query = window.location.search.substring(1);
   var param = false;
 
@@ -64,9 +64,7 @@ function initMap() {
       else if ( all_theme[0]  == 'category'){
         show_by_filter(vars[i])
         elem = all_theme[1].split(",");
-        for (var j = 0; j< elem.length; j++){
-          document.getElementById(elem[j]).checked = true;
-        }
+        checkcat(elem, true);
       }
       else if (all_theme[0] == 'zoom'){
         param = true;
@@ -136,6 +134,20 @@ function getMeThere(lat, lng){
   });
 }
 
+function bookmarker(id){
+  $.ajax({
+    type: "POST",
+    url: '/bookmarkers',
+    data : 'id='+id,
+    success: function (data) {
+      alert('Point register');
+    },
+    error: function(){
+      alert('something is wrong');
+    }
+  });
+}
+
 function addMarker(arrInfo) {
   var marker;
   var phone;
@@ -167,11 +179,12 @@ function addMarker(arrInfo) {
         thumbnail = '<p>' + ((arrInfo[i].thumbnail_url.match("missing.png")) == null ? '<img src=' + arrInfo[i].thumbnail_url + 'alt="image of interest"> </p>' : '</p>');
         infoBubble.open(map, marker);
         infoBubble.addTab("<div class='infowindow'>Info</div>",
-          '<div class="infowindow">'+
+          '<div class="infowindow" style="">'+
+          "<a href='#' onclick='bookmarker("+ arrInfo[i].id + ")'> Bookmarker</a>" +
           '<h1>'+ arrInfo[i].name +'</h1>'+
           '<div id="bodywindow">'+
           '<p> Address:&nbsp' + arrInfo[i].address + '</p>' +
-          "<button onclick='getMeThere("+ arrInfo[i].latitude +","+ arrInfo[i].longitude +")'>Get me there</button>" +
+          "<button onclick='getMeThere("+ arrInfo[i].latitude +","+ arrInfo[i].longitude +")' class='getmethere'>Get me there</button>" +
           phone +
           thumbnail +
           website +
@@ -199,6 +212,12 @@ function createCircle(map){
   map.setOptions({zoom : 15, center: homeposition});
 }
 
+function checkcat(elem, bol){
+  for (var j = 0; j< elem.length; j++){
+    document.getElementById(elem[j]).checked = bol;
+  }
+}
+
 function checkbox(id){
   if (document.getElementById(id).checked == true){
     $('.'+id).show();
@@ -215,6 +234,28 @@ function checkCircle(id){
   if (document.getElementById(id).checked == true)
     createCircle(map, null );
   else{
-    circle.setMap(null);
+    circle.setMap(null)
+  }
+}
+
+function checkBookmarker(id){
+  if (document.getElementById(id).checked == true)
+  {
+    for (i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    checkcat(cat, false);
+    $.ajax({
+      type: "GET",
+      url: '/bookmarkers',
+      data : '',
+      success: function (data) {
+        addMarker(data);
+      }
+    })
+  }
+  else{
+    show_by_filter('category=all');
+    checkcat(cat, true);
   }
 }

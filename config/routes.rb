@@ -5,6 +5,7 @@ Rails.application.routes.draw do
                  :controllers => { :registrations => 'users/registrations' }
 
   resource :interests
+  resource :bookmarkers
   root 'interests#fullscreen'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
