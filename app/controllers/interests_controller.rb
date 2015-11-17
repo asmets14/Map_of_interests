@@ -3,10 +3,6 @@ class InterestsController < ApplicationController
   before_filter :initialize_category
 
   def index
-    @interest = Interest.all
-  end
-
-  def show
     if !(params[:tag].nil?)
       @interest = Interest.tagged_with(params[:tag], :any => true)
     elsif !(params[:category].nil?)
