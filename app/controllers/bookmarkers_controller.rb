@@ -1,6 +1,10 @@
 class BookmarkersController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    @bookmarker = Bookmarker.where(:user_id => current_user.id)
+  end
+
   def create
     @bookmarker = Bookmarker.new
     @bookmarker.user_id = current_user.id
@@ -12,7 +16,4 @@ class BookmarkersController < ApplicationController
     end
   end
 
-  def show
-    @bookmarker = Bookmarker.where(:user_id => current_user.id)
-  end
 end
