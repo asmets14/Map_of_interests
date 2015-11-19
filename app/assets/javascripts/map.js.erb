@@ -160,10 +160,10 @@ function unbookmarkers(id){
     type: "DELETE",
     url: '/bookmarkers/:id',
     data : 'interest_id='+id,
-    success: function (data, id) {
+    success: function (data) {
       alert('Unbokmaker');
       infoBubble.close();
-      setMapNotOnAll(null, id);
+      checkBookmarker('bookmarker');
     },
     error: function(){
       alert('something is wrong');
@@ -267,7 +267,6 @@ function checkbox(id){
     show_by_filter('category='+ id);
   }
   else{
-    console.log(id)
     setMapNotOnAll(null, id);
     $('.'+ id).hide();
   }
