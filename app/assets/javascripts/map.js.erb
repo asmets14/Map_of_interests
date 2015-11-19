@@ -1,4 +1,5 @@
 var map;
+var flag_book;
 var circle;
 var homeposition;
 var markers = [];
@@ -31,6 +32,7 @@ var icons = {
 function currentUser(){
   logged_in = true;
 }
+
 function initMap() {
   var paris = {lat: 48.856614, lng: 2.3522219000000177};
   var myloc;
@@ -84,7 +86,7 @@ function initMap() {
   }
 
   else{
-    i = 0;
+   i = 0;
     show_by_filter('category=all');
     while(cat[i]){
       document.getElementById(cat[i]).checked = true;
@@ -142,9 +144,10 @@ function bookmarkers(id){
   $.ajax({
     type: "POST",
     url: '/bookmarkers',
-    data : 'id='+id,
+    data : 'interest_id='+id,
     success: function (data) {
       alert('Point register');
+      infoBubble.close();
     },
     error: function(){
       alert('something is wrong');
@@ -152,10 +155,31 @@ function bookmarkers(id){
   });
 }
 
+function unbookmarkers(id){
+  $.ajax({
+    type: "DELETE",
+    url: '/bookmarkers/:id',
+    data : 'interest_id='+id,
+    success: function (data, id) {
+      alert('Unbokmaker');
+      infoBubble.close();
+      setMapNotOnAll(null, id);
+    },
+    error: function(){
+      alert('something is wrong');
+    }
+  });
+}
+
+function flag_bookmarker(elem){
+  flag_book = elem;
+}
+
 function addMarker(arrInfo) {
   var marker;
   var phone;
   var website;
+  var bookmarker;
   var thumbnail;
   infoBubble = new InfoBubble;
 
@@ -181,10 +205,21 @@ function addMarker(arrInfo) {
         phone = '<p>' + (arrInfo[i].phone ? 'Phone number : ' + arrInfo[i].phone +' </p>' : '</p>');
         website = '<p>' + (arrInfo[i].website ? 'website : <a href='+ '"' + arrInfo[i].website +'">' + arrInfo[i].website + '</a>' : '</p>')
         thumbnail = '<p>' + ((arrInfo[i].thumbnail_url.match("missing.png")) == null ? '<img src=' + arrInfo[i].thumbnail_url + 'alt="image of interest"> </p>' : '</p>');
-        if (logged_in == true )
-          bookmarker = "<button onclick='bookmarkers("+ arrInfo[i].id + ")' class='getmethere'>Bookmarker</button>"
-        else
-          bookmarker = ''
+        if (logged_in == true ){
+            $.ajax({
+              type: "GET",
+              url: '/bookmarkers/:id',
+              data : 'interest_id='+ arrInfo[i].id,
+              async : false,
+              success: function (data, flag_book) {
+                flag_bookmarker(data.flag);
+              }
+            })
+            if (flag_book)
+              bookmarker = "<button onclick='unbookmarkers("+ arrInfo[i].id + ")' class='getmethere bookmarker-button'>Unbookmarker</button>"
+            else
+              bookmarker = "<button onclick='bookmarkers("+ arrInfo[i].id + ")' class='getmethere bookmarker-button'>Bookmarker</button>"
+        }
         infoBubble.open(map, marker);
         infoBubble.addTab("<div class='infowindow'>Info</div>",
           '<div class="infowindow" style="">'+
