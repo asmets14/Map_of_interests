@@ -18,10 +18,10 @@
         </a></li>
       <% end %>
 
-      <li><a><label><input type="checkbox" id='circle' onclick="checkCircle('circle')" > Within 10 min</label></a></li>
+      <li><a class='cursor-pointer'><label ><input type="checkbox" id='circle' onclick="checkCircle('circle')"  > Within 10 min</label></a></li>
 
       <% if current_user %>
-        <li><a><label><input type="checkbox" id='bookmarker' onclick="checkBookmarker('bookmarker')" > Bookmarks</label></a></li>
+        <li><a class='cursor-pointer'><label><input type="checkbox" id='bookmarker' onclick="checkBookmarker('bookmarker')" > Bookmarks</label></a></li>
       <% end %>
 
       <% if !current_user %>

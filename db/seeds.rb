@@ -11,5 +11,5 @@ require 'csv'
 
   path = "#{Rails.root}/spec/fixtures/interests_points.csv"
   CSV.foreach(path, { encoding: "UTF-8", headers: true,  header_converters: :symbol, converters: :all}) do |row|
-      Interest.create(row.to_hash)
+    Interest.create(row.to_hash)
   end
