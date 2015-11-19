@@ -216,9 +216,12 @@ function addMarker(arrInfo) {
               }
             })
             if (flag_book)
-              bookmarker = "<button onclick='unbookmarkers("+ arrInfo[i].id + ")' class='getmethere bookmarker-button'>Unbookmarker</button>"
+              bookmarker = "<button onclick='unbookmarkers("+ arrInfo[i].id + ")' class='getmethere bookmarker-button'>Unbookmark</button>"
             else
-              bookmarker = "<button onclick='bookmarkers("+ arrInfo[i].id + ")' class='getmethere bookmarker-button'>Bookmarker</button>"
+              bookmarker = "<button onclick='bookmarkers("+ arrInfo[i].id + ")' class='getmethere bookmarker-button'>Bookmark</button>"
+        }
+        else{
+          bookmarker = ''
         }
         infoBubble.open(map, marker);
         infoBubble.addTab("<div class='infowindow'>Info</div>",
