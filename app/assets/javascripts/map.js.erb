@@ -146,7 +146,7 @@ function bookmarkers(id){
     url: '/bookmarkers',
     data : 'interest_id='+id,
     success: function (data) {
-      alert('Point register');
+      alert('Point bookmarked');
       infoBubble.close();
     },
     error: function(){
@@ -161,7 +161,7 @@ function unbookmarkers(id){
     url: '/bookmarkers/:id',
     data : 'interest_id='+id,
     success: function (data) {
-      alert('Unbokmaker');
+      alert('Point unbookmarked');
       infoBubble.close();
       checkBookmarker('bookmarker');
     },
