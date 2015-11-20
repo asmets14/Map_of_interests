@@ -11,5 +11,19 @@ require 'csv'
 
   path = "#{Rails.root}/spec/fixtures/interests_points.csv"
   CSV.foreach(path, { encoding: "UTF-8", headers: true,  header_converters: :symbol, converters: :all}) do |row|
-    Interest.create(row.to_hash)
+      puts row[:name]
+      if row[:thumbnail_file_name]
+        thumb = File.open("#{Rails.root}/spec/fixtures/images/#{row[:thumbnail_file_name]}")
+      else
+        thumb = ''
+      end
+    Interest.create!({
+      :name => row[:name],
+      :address => row[:address],
+      :longitude => row[:longitude],
+      :latitude => row[:latitude],
+      :website => row[:website],
+      :category => row[:category],
+      :thumbnail => thumb
+    })
   end
