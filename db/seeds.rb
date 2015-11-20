@@ -11,7 +11,6 @@ require 'csv'
 
   path = "#{Rails.root}/spec/fixtures/interests_points.csv"
   CSV.foreach(path, { encoding: "UTF-8", headers: true,  header_converters: :symbol, converters: :all}) do |row|
-      puts row[:name]
       if row[:thumbnail_file_name]
         thumb = File.open("#{Rails.root}/spec/fixtures/images/#{row[:thumbnail_file_name]}")
       else
