@@ -203,7 +203,7 @@ function addMarker(arrInfo) {
             });
         }
         phone = '<p>' + (arrInfo[i].phone ? 'Phone number : ' + arrInfo[i].phone +' </p>' : '</p>');
-        website = '<p>' + (arrInfo[i].website ? 'website : <a href='+ '"' + arrInfo[i].website +'">' + arrInfo[i].website + '</a>' : '</p>')
+        website = '<p>' + (arrInfo[i].website ? 'website : <a href= "http://' + arrInfo[i].website + '"' +' target="_blank">' + arrInfo[i].website + '</a>' : '</p>')
         thumbnail = '<p>' + ((arrInfo[i].thumbnail_url.match("missing.png")) == null ? '<img src=' + arrInfo[i].thumbnail_url + 'alt="image of interest"> </p>' : '</p>');
         if (logged_in == true ){
             $.ajax({
@@ -224,7 +224,7 @@ function addMarker(arrInfo) {
           bookmarker = ''
         }
         infoBubble.open(map, marker);
-        infoBubble.addTab("<div class='infowindow'>Info</div>",
+        infoBubble.addTab("<div class='infowindow'></div>",
           '<div class="infowindow" style="">'+
           '<h1>'+ arrInfo[i].name +'</h1>'+
           '<div id="bodywindow">'+
