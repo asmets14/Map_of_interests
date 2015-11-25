@@ -57,7 +57,7 @@ ActiveAdmin.register Interest do
     inputs do
       input :name
       input :address
-      input :category, as: :select, collection: Interest::CATEGORY, include_blank: false
+      input :category, as: :select, collection: Category.where(:published => true), include_blank: false
       input :phone
       input :website
       input :thumbnail

@@ -2,41 +2,28 @@ var map;
 var flag_book;
 var circle;
 var homeposition;
-var markers = [];
-var directionsDisplay = new google.maps.DirectionsRenderer;
-var cat  = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"];
 var infoBubble;
+var markers = [];
+var cat = []
+var directionsDisplay = new google.maps.DirectionsRenderer;
+var categories = <%= Category.where(:published => true).map(&:decorate).to_json %>;
 var logged_in = false;
-var iconBase = 'https://storage.googleapis.com/geolocalisation/';
-var icons = {
-  Theatre: {
-    icon: iconBase + 'theatre05.png'
-  },
-  Club: {
-    icon: iconBase + 'club01.png'
-  },
-  Museum: {
-    icon: iconBase + 'museum.png'
-  },
-  Cafe: {
-    icon: iconBase + 'cafe.png'
-  },
-  Restaurant: {
-    icon: iconBase + 'restaurant.png'
-  },
-  Bar: {
-    icon: iconBase + 'bar.png'
-  }
-};
 
 function currentUser(){
   logged_in = true;
+}
+
+function category(){
+  for (i = 0; i < categories.length ; i++){
+    cat.push(categories[i].name);
+  }
 }
 
 function initMap() {
   var paris = {lat: 48.856614, lng: 2.3522219000000177};
   var myloc;
 
+  category();
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 2,
     center: paris,
@@ -86,6 +73,7 @@ function initMap() {
   }
 
   else{
+    console.log(cat)
    i = 0;
     show_by_filter('category=all');
     while(cat[i]){
@@ -175,6 +163,15 @@ function flag_bookmarker(elem){
   flag_book = elem;
 }
 
+function icon_initialize(element){
+  j = 0;
+  while(categories[j]){
+    if (categories[j].name == element)
+        return (categories[j].icon_url);
+    j++;
+  }
+}
+
 function addMarker(arrInfo) {
   var marker;
   var phone;
@@ -184,10 +181,11 @@ function addMarker(arrInfo) {
   infoBubble = new InfoBubble;
 
   for (i = 0; i < arrInfo.length ; i++){
+    icons = icon_initialize(arrInfo[i].category)
     marker = new google.maps.Marker({
       clickable : true,
       position: { lat: arrInfo[i].latitude, lng: arrInfo[i].longitude },
-      icon: icons[arrInfo[i].category].icon,
+      icon: icons,
       map: map,
       category: arrInfo[i].category
     });

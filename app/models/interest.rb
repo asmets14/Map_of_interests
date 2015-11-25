@@ -1,5 +1,4 @@
 class Interest < ActiveRecord::Base
-  CATEGORY = %w(Theatre Club Museum Restaurant Bar Cafe)
   has_many :bookmarkers
   has_many :users, through: :bookmarkers
   acts_as_taggable
@@ -20,4 +19,6 @@ class Interest < ActiveRecord::Base
       geocode
     end
   end
+
+
 end
