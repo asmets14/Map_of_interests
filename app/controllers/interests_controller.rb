@@ -11,7 +11,7 @@ class InterestsController < ApplicationController
       else
         category_title = params[:category].split(',')
         category_title.each do | c |
-          @interest = Interest.where(category: c.capitalize)
+          @interest = Interest.where(category: c)
         end
       end
     end

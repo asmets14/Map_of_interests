@@ -5,6 +5,7 @@ class Interest < ActiveRecord::Base
   geocoded_by :address
   scope :published, -> {Interest.where(:published => true)}
   before_validation :activate_geocoder
+  before_validation :initialize_category
   validates :address, presence: true
   validates :name, presence: true
   validates :latitude, presence: true
@@ -20,5 +21,8 @@ class Interest < ActiveRecord::Base
     end
   end
 
+  def initialize_category
+    self.category = Category.find_by_id(category).name
+  end
 
 end
