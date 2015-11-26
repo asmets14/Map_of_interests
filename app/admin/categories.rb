@@ -29,7 +29,7 @@ ActiveAdmin.register Category do
   form do |f|
     inputs do
       input :name
-      input :thumbnail
+      input :thumbnail, label: 'Thumbnail (35x35)'
       input :published
       submit
     end
