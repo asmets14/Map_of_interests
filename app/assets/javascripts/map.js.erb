@@ -4,9 +4,9 @@ var circle;
 var homeposition;
 var infoBubble;
 var markers = [];
-var cat = []
+var cat = [];
+var categories = [];
 var directionsDisplay = new google.maps.DirectionsRenderer;
-var categories = <%= Category.where(:published => true).map(&:decorate).to_json %>;
 var logged_in = false;
 
 function currentUser(){
@@ -14,6 +14,7 @@ function currentUser(){
 }
 
 function category(){
+  categories = <%= Category.where(:published => true).map(&:decorate).to_json %>;
   for (i = 0; i < categories.length ; i++){
     cat.push(categories[i].name);
   }
@@ -22,7 +23,6 @@ function category(){
 function initMap() {
   var paris = {lat: 48.856614, lng: 2.3522219000000177};
   var myloc;
-
   category();
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 2,
@@ -263,7 +263,6 @@ function checkcat(elem, bol){
 
 function checkbox(id){
   category();
-  console.log(cat);
   if (document.getElementById(id).checked == true){
     $('.'+id).show();
     show_by_filter('category='+ id);
