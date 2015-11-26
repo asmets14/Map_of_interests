@@ -24,7 +24,7 @@ class InterestsController < ApplicationController
   private
 
   def initialize_category
-    @category = Category.where(:published => true).map(&:name)
+    @category = ['Bar', 'Museum']
   end
 end
 
