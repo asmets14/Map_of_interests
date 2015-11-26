@@ -26,8 +26,8 @@ require 'csv'
       :thumbnail => thumb
     })
   end
-  Category.create!(:id => 1, :published => true, :name => "Theatre", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/theatre.png"))
-  Category.create!(:id => 2, :published => true, :name => "Museum", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/museum.png"))
-  Category.create!(:id => 3, :published => true, :name => "Cafe", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/bar.png"))
-  Category.create!(:id => 4, :published => true, :name => "Bar", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/cafe.png"))
-  Category.create!(:id => 5, :published => true, :name => "Club", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/club.png"))
+  Category.create!(:published => true, :name => "Theatre", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/theatre.png"))
+  Category.create!(:published => true, :name => "Museum", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/museum.png"))
+  Category.create!(:published => true, :name => "Cafe", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/bar.png"))
+  Category.create!(:published => true, :name => "Bar", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/cafe.png"))
+  Category.create!(:published => true, :name => "Club", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/club.png"))
