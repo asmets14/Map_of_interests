@@ -7,7 +7,7 @@ class Category < ActiveRecord::Base
   def decorate
     {
       :name => name,
-      :icon_url => thumbnail.url
+      :icon_url => thumbnail.url(:medium)
     }
   end
 end
