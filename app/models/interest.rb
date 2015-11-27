@@ -22,7 +22,7 @@ class Interest < ActiveRecord::Base
   end
 
   def initialize_category
-    unless category.nil? and Category.find_by_id(category).nil?
+    unless Category.find_by_id(category).nil?
       self.category = Category.find_by_id(category).name
     end
   end
