@@ -263,6 +263,8 @@ function checkcat(elem, bol){
 
 function checkbox(id){
   category();
+  if (id)
+    console.log('ok');
   if (document.getElementById(id).checked == true){
     $('.'+id).show();
     show_by_filter('category='+ id);
