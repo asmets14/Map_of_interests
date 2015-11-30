@@ -14,7 +14,7 @@
 
       <% @category.each do |c| %>
         <li><a href="#">
-          <label><input type="checkbox"  id='<%= c %>' onclick="checkbox('<%= c %>')" > <%= c %></label>
+          <label><input type="checkbox"  id='<%= c[:category_id] %>' onclick="checkbox('<%= c[:category_id] %>')" > <%= c[:name] %></label>
         </a></li>
       <% end %>
 

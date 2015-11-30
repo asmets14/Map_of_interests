@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124104113) do
+ActiveRecord::Schema.define(version: 20151130102100) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20151124104113) do
 
   create_table "interests", force: true do |t|
     t.string   "name"
-    t.string   "category"
     t.string   "address"
     t.float    "longitude"
     t.float    "latitude"
@@ -77,6 +76,7 @@ ActiveRecord::Schema.define(version: 20151124104113) do
     t.string   "website"
     t.string   "phone"
     t.boolean  "published",              default: true
+    t.integer  "category_id"
   end
 
   create_table "taggings", force: true do |t|

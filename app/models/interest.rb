@@ -1,7 +1,7 @@
 class Interest < ActiveRecord::Base
   has_many :bookmarkers
   has_many :users, through: :bookmarkers
-  has_many :categories
+  belongs_to :category
   acts_as_taggable
   geocoded_by :address
   scope :published, -> {Interest.where(:published => true)}

@@ -16,7 +16,7 @@ function currentUser(){
 function category(){
   categories = <%= Category.where(:published => true).map(&:decorate).to_json %>;
   for (i = 0; i < categories.length ; i++){
-    cat.push(categories[i].name);
+    cat.push(categories[i].category_id);
   }
 }
 
@@ -74,7 +74,7 @@ function initMap() {
 
   else{
    i = 0;
-    show_by_filter('category=all');
+    show_by_filter('category_id=all');
     while(cat[i]){
       document.getElementById(cat[i]).checked = true;
       i++;
@@ -164,9 +164,9 @@ function flag_bookmarker(elem){
 
 function icon_initialize(element){
   j = 0;
-  while(categories[j]){
-    if (categories[j].name == element)
-        return (categories[j].icon_url);
+  while(cat[j]){
+    if (categories[j].category_id == element)
+      return (categories[j].icon_url);
     j++;
   }
 }
@@ -180,13 +180,13 @@ function addMarker(arrInfo) {
   infoBubble = new InfoBubble;
 
   for (i = 0; i < arrInfo.length ; i++){
-    icons = icon_initialize(arrInfo[i].category)
+    icons = icon_initialize(arrInfo[i].category_id)
     marker = new google.maps.Marker({
       clickable : true,
       position: { lat: arrInfo[i].latitude, lng: arrInfo[i].longitude },
       icon: icons,
       map: map,
-      category: arrInfo[i].category
+      category: arrInfo[i].category_id
     });
 
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
@@ -262,16 +262,12 @@ function checkcat(elem, bol){
 }
 
 function checkbox(id){
-  category();
-  if (id)
-    console.log('ok');
   if (document.getElementById(id).checked == true){
-    $('.'+id).show();
-    show_by_filter('category='+ id);
+     $('.'+id).show();
+    show_by_filter('category_id='+ id);
   }
   else{
     setMapNotOnAll(null, id);
-    $('.'+ id).hide();
   }
 }
 
@@ -300,7 +296,7 @@ function checkBookmarker(id){
     })
   }
   else{
-    show_by_filter('category=all');
+    show_by_filter('category_id=all');
     checkcat(cat, true);
   }
 }

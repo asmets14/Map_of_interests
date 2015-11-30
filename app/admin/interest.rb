@@ -1,5 +1,5 @@
 ActiveAdmin.register Interest do
-  permit_params :name, :category, :longitude, :latitude, :address, :thumbnail, :phone, :website, :tag_list, :published
+  permit_params :name, :category_id, :longitude, :latitude, :address, :thumbnail, :phone, :website, :tag_list, :published
 
   batch_action :published do |id|
     Interest.find(id).each do |e|
@@ -31,7 +31,7 @@ ActiveAdmin.register Interest do
         image_tag(event.thumbnail.url(:thumb))
       end
     end
-    column :category
+    column :category_id
     column :tag_list
     column :published
     actions
@@ -57,7 +57,7 @@ ActiveAdmin.register Interest do
     inputs do
       input :name
       input :address
-      input :category, as: :select, collection: Category.where(:published => true), include_blank: false
+      input :category_id , as: :select, collection: Category.where(:published => true), include_blank: false
       input :phone
       input :website
       input :thumbnail
