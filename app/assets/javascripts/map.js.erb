@@ -4,8 +4,8 @@ var circle;
 var homeposition;
 var infoBubble;
 var markers = [];
-var cat = [];
-var categories = [];
+cat = [];
+categories = [];
 var directionsDisplay = new google.maps.DirectionsRenderer;
 var logged_in = false;
 
@@ -13,8 +13,20 @@ function currentUser(){
   logged_in = true;
 }
 
-function category(){
-  categories = <%= Category.where(:published => true).map(&:decorate).to_json %>;
+function recovery_data_categories(){
+  $.ajax({
+    type: "GET",
+    url: '/categories',
+    data : '',
+    async: false,
+    success: function (data) {
+      category(data);
+    }
+  })
+}
+
+function category(data_categories){
+  categories = data_categories;
   for (i = 0; i < categories.length ; i++){
     cat.push(categories[i].category_id);
   }
@@ -23,7 +35,7 @@ function category(){
 function initMap() {
   var paris = {lat: 48.856614, lng: 2.3522219000000177};
   var myloc;
-  category();
+  recovery_data_categories();
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 2,
     center: paris,
@@ -75,8 +87,8 @@ function initMap() {
   else{
     i = 0;
     show_by_filter('category_id=all');
+    console.log('cat => ' + cat);
     while(cat[i]){
-      console.log(cat[i]);
       document.getElementById(cat[i]).checked = true;
       i++;
     }
@@ -173,7 +185,6 @@ function icon_initialize(element){
 }
 
 function addMarker(arrInfo) {
-  var marker;
   var phone;
   var website;
   var bookmarker;
@@ -181,9 +192,8 @@ function addMarker(arrInfo) {
   infoBubble = new InfoBubble;
 
   for (i = 0; i < arrInfo.length ; i++){
-    console.log(arrInfo[i].category_id);
     icons = icon_initialize(arrInfo[i].category_id);
-    marker = new google.maps.Marker({
+    var marker = new google.maps.Marker({
       clickable : true,
       position: { lat: arrInfo[i].latitude, lng: arrInfo[i].longitude },
       icon: icons,
@@ -257,9 +267,9 @@ function createCircle(map){
   map.setOptions({zoom : 15, center: homeposition});
 }
 
-function checkcat(elem, bol){
+function checkcat(elem, bool){
   for (var j = 0; j< elem.length; j++){
-    document.getElementById(elem[j]).checked = bol;
+    document.getElementById(elem[j]).checked = bool;
   }
 }
 
