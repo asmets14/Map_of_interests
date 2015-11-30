@@ -73,9 +73,10 @@ function initMap() {
   }
 
   else{
-   i = 0;
+    i = 0;
     show_by_filter('category_id=all');
     while(cat[i]){
+      console.log(cat[i]);
       document.getElementById(cat[i]).checked = true;
       i++;
     }
@@ -180,7 +181,8 @@ function addMarker(arrInfo) {
   infoBubble = new InfoBubble;
 
   for (i = 0; i < arrInfo.length ; i++){
-    icons = icon_initialize(arrInfo[i].category_id)
+    console.log(arrInfo[i].category_id);
+    icons = icon_initialize(arrInfo[i].category_id);
     marker = new google.maps.Marker({
       clickable : true,
       position: { lat: arrInfo[i].latitude, lng: arrInfo[i].longitude },
