@@ -1,11 +1,11 @@
 class Interest < ActiveRecord::Base
   has_many :bookmarkers
   has_many :users, through: :bookmarkers
+  has_many :categories
   acts_as_taggable
   geocoded_by :address
   scope :published, -> {Interest.where(:published => true)}
   before_validation :activate_geocoder
-  before_validation :initialize_category
   validates :address, presence: true
   validates :name, presence: true
   validates :latitude, presence: true
@@ -20,11 +20,4 @@ class Interest < ActiveRecord::Base
       geocode
     end
   end
-
-  def initialize_category
-    unless Category.find_by_id(category).nil?
-      self.category = Category.find_by_id(category).name
-    end
-  end
-
 end
