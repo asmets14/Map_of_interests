@@ -142,7 +142,7 @@ function getMeThere(lat, lng){
   });
 }
 
-function recoveryDataBookmarks(id){
+function createBookmark(id){
   $.ajax({
     type: "POST",
     url: '/bookmarks',
@@ -157,7 +157,7 @@ function recoveryDataBookmarks(id){
   });
 }
 
-function destroyBookmarks(id){
+function destroyBookmark(id){
   $.ajax({
     type: "DELETE",
     url: '/bookmarks/:id',
@@ -227,9 +227,9 @@ function addMarker(arrDataMarker) {
               }
             })
             if (flagBookmark)
-              bookmark = "<button onclick='destroyBookmarks("+ arrDataMarker[i].id + ")' class='getmethere bookmarker-button'>Unbookmark</button>"
+              bookmark = "<button onclick='destroyBookmark("+ arrDataMarker[i].id + ")' class='getmethere bookmarker-button'>Unbookmark</button>"
             else
-              bookmark = "<button onclick='recoveryDataBookmarks("+ arrDataMarker[i].id + ")' class='getmethere bookmarker-button'>Bookmark</button>"
+              bookmark = "<button onclick='createBookmark("+ arrDataMarker[i].id + ")' class='getmethere bookmarker-button'>Bookmark</button>"
         }
         else{
           bookmark = ''

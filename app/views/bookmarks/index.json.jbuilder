@@ -1,4 +1,4 @@
-@bookmark.each do |b|
+@bookmarks.each do |b|
   @book=  Interest.where(:id => (b.interest_id))
   json.array! @book do |i|
     json.id i.id

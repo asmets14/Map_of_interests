@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @bookmark = Bookmark.where(:user_id => current_user.id)
+    @bookmarks = Bookmark.where(:user_id => current_user.id)
   end
 
   def create

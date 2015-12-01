@@ -1,7 +1,7 @@
 class DropBookmarkersTable < ActiveRecord::Migration
   def change
     def up
-     drop_table :Bookmarkers
+      drop_table :Bookmarkers
     end
 
     def down
