@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201151635) do
+ActiveRecord::Schema.define(version: 20151201155015) do
+
+  create_table "PointOfInterests", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
+    t.string   "website"
+    t.string   "phone"
+    t.boolean  "published",              default: true
+    t.integer  "category_id"
+  end
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -60,23 +77,6 @@ ActiveRecord::Schema.define(version: 20151201151635) do
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
-  end
-
-  create_table "interests", force: true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.float    "longitude"
-    t.float    "latitude"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "thumbnail_file_name"
-    t.string   "thumbnail_content_type"
-    t.integer  "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
-    t.string   "website"
-    t.string   "phone"
-    t.boolean  "published",              default: true
-    t.integer  "category_id"
   end
 
   create_table "taggings", force: true do |t|
