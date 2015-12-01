@@ -22,7 +22,7 @@ class BookmarksController < ApplicationController
 
   def destroy
     @bookmark = Bookmark.where(:user_id => current_user.id).where(:interest_id => params[:interest_id])
-    Bookmark.delete(@bookmarker)
+    Bookmark.delete(@bookmark)
     redirect_to :back, status: 200
   end
 
