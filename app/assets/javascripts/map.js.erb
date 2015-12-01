@@ -2,41 +2,40 @@ var map;
 var flag_book;
 var circle;
 var homeposition;
-var markers = [];
-var directionsDisplay = new google.maps.DirectionsRenderer;
-var cat  = ["Theatre", "Club", "Museum", "Restaurant" ,"Bar","Cafe"];
 var infoBubble;
+var markers = [];
+cat = [];
+categories = [];
+var directionsDisplay = new google.maps.DirectionsRenderer;
 var logged_in = false;
-var iconBase = 'https://storage.googleapis.com/geolocalisation/';
-var icons = {
-  Theatre: {
-    icon: iconBase + 'theatre05.png'
-  },
-  Club: {
-    icon: iconBase + 'club01.png'
-  },
-  Museum: {
-    icon: iconBase + 'museum.png'
-  },
-  Cafe: {
-    icon: iconBase + 'cafe.png'
-  },
-  Restaurant: {
-    icon: iconBase + 'restaurant.png'
-  },
-  Bar: {
-    icon: iconBase + 'bar.png'
-  }
-};
 
 function currentUser(){
   logged_in = true;
 }
 
+function recovery_data_categories(){
+  $.ajax({
+    type: "GET",
+    url: '/categories',
+    data : '',
+    async: false,
+    success: function (data) {
+      category(data);
+    }
+  })
+}
+
+function category(data_categories){
+  categories = data_categories;
+  for (i = 0; i < categories.length ; i++){
+    cat.push(categories[i].category_id);
+  }
+}
+
 function initMap() {
   var paris = {lat: 48.856614, lng: 2.3522219000000177};
   var myloc;
-
+  recovery_data_categories();
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: 2,
     center: paris,
@@ -86,8 +85,8 @@ function initMap() {
   }
 
   else{
-   i = 0;
-    show_by_filter('category=all');
+    i = 0;
+    show_by_filter('category_id=all');
     while(cat[i]){
       document.getElementById(cat[i]).checked = true;
       i++;
@@ -175,8 +174,16 @@ function flag_bookmarker(elem){
   flag_book = elem;
 }
 
+function icon_initialize(element){
+  j = 0;
+  while(cat[j]){
+    if (categories[j].category_id == element)
+      return (categories[j].icon_url);
+    j++;
+  }
+}
+
 function addMarker(arrInfo) {
-  var marker;
   var phone;
   var website;
   var bookmarker;
@@ -184,12 +191,13 @@ function addMarker(arrInfo) {
   infoBubble = new InfoBubble;
 
   for (i = 0; i < arrInfo.length ; i++){
-    marker = new google.maps.Marker({
+    icons = icon_initialize(arrInfo[i].category_id);
+    var marker = new google.maps.Marker({
       clickable : true,
       position: { lat: arrInfo[i].latitude, lng: arrInfo[i].longitude },
-      icon: icons[arrInfo[i].category].icon,
+      icon: icons,
       map: map,
-      category: arrInfo[i].category
+      category: arrInfo[i].category_id
     });
 
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
@@ -258,20 +266,19 @@ function createCircle(map){
   map.setOptions({zoom : 15, center: homeposition});
 }
 
-function checkcat(elem, bol){
+function checkcat(elem, bool){
   for (var j = 0; j< elem.length; j++){
-    document.getElementById(elem[j]).checked = bol;
+    document.getElementById(elem[j]).checked = bool;
   }
 }
 
 function checkbox(id){
   if (document.getElementById(id).checked == true){
-    $('.'+id).show();
-    show_by_filter('category='+ id);
+     $('.'+id).show();
+    show_by_filter('category_id='+ id);
   }
   else{
     setMapNotOnAll(null, id);
-    $('.'+ id).hide();
   }
 }
 
@@ -300,7 +307,7 @@ function checkBookmarker(id){
     })
   }
   else{
-    show_by_filter('category=all');
+    show_by_filter('category_id=all');
     checkcat(cat, true);
   }
 }

@@ -1,7 +1,7 @@
 class Interest < ActiveRecord::Base
-  CATEGORY = %w(Theatre Club Museum Restaurant Bar Cafe)
   has_many :bookmarkers
   has_many :users, through: :bookmarkers
+  belongs_to :category
   acts_as_taggable
   geocoded_by :address
   scope :published, -> {Interest.where(:published => true)}

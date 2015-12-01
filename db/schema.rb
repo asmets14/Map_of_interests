@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110083920) do
+ActiveRecord::Schema.define(version: 20151130102100) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -53,9 +53,17 @@ ActiveRecord::Schema.define(version: 20151110083920) do
     t.datetime "updated_at"
   end
 
+  create_table "categories", force: true do |t|
+    t.boolean  "published",              default: false
+    t.string   "name"
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
+  end
+
   create_table "interests", force: true do |t|
     t.string   "name"
-    t.string   "category"
     t.string   "address"
     t.float    "longitude"
     t.float    "latitude"
@@ -68,6 +76,7 @@ ActiveRecord::Schema.define(version: 20151110083920) do
     t.string   "website"
     t.string   "phone"
     t.boolean  "published",              default: true
+    t.integer  "category_id"
   end
 
   create_table "taggings", force: true do |t|

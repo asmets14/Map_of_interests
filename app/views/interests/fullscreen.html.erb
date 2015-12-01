@@ -1,5 +1,7 @@
 <script type='text/javascript'>
-  google.maps.event.addDomListener(window, 'load', initMap);
+  $( document ).ready(function() {
+    google.maps.event.addDomListener(window, 'load', initMap);
+  })
   <% if current_user %>
       currentUser();
   <% end %>
@@ -14,7 +16,7 @@
 
       <% @category.each do |c| %>
         <li><a href="#">
-          <label><input type="checkbox"  id='<%= c %>' onclick="checkbox('<%= c %>')" > <%= c %></label>
+          <label><input type="checkbox"  id='<%= c[:category_id] %>' onclick="checkbox('<%= c[:category_id] %>')" > <%= c[:name] %></label>
         </a></li>
       <% end %>
 

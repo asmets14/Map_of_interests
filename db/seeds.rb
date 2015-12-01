@@ -16,13 +16,29 @@ require 'csv'
       else
         thumb = ''
       end
+      if row[:category] == 'Theatre'
+        category_id = 1
+      elsif row[:category] == 'Museum'
+        category_id = 2
+      elsif row[:category] == 'Cafe'
+        category_id = 3
+      elsif row[:category] == 'Bar'
+        category_id = 4
+      elsif row[:category] == 'Club'
+        category_id = 5
+      end
     Interest.create!({
       :name => row[:name],
       :address => row[:address],
       :longitude => row[:longitude],
       :latitude => row[:latitude],
       :website => row[:website],
-      :category => row[:category],
+      :category_id => category_id,
       :thumbnail => thumb
     })
   end
+  Category.create!(:published => true, :name => "Theatre", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/theatre.png"))
+  Category.create!(:published => true, :name => "Museum", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/museum.png"))
+  Category.create!(:published => true, :name => "Cafe", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/bar.png"))
+  Category.create!(:published => true, :name => "Bar", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/cafe.png"))
+  Category.create!(:published => true, :name => "Club", thumbnail: File.new("#{Rails.root}/spec/fixtures/images/club.png"))

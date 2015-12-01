@@ -6,7 +6,7 @@
     json.address i.address
     json.longitude i.longitude
     json.latitude i.latitude
-    json.category i.category
+    json.category_id i.category_id
     json.phone i.phone
     json.website i.website
     json.thumbnail_url i.thumbnail.url(:medium)
