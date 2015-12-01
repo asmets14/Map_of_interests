@@ -44,7 +44,7 @@ ActiveAdmin.register Interest do
       end
     end
     column :tag_list
-    column :category_id
+    column :category
     column :published
     actions
   end
