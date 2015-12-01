@@ -1,4 +1,4 @@
-json.array! @interest do |i|
+json.array! @PointOfInterests do |i|
   json.id i.id
   json.name i.name
   json.address i.address

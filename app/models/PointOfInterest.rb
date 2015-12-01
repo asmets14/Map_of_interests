@@ -1,10 +1,10 @@
-class Interest < ActiveRecord::Base
+class PointOfInterest < ActiveRecord::Base
   has_many :bookmarkers
   has_many :users, through: :bookmarkers
   belongs_to :category
   acts_as_taggable
   geocoded_by :address
-  scope :published, -> {Interest.where(:published => true)}
+  scope :published, -> {PointOfInterest.where(:published => true)}
   before_validation :activate_geocoder
   validates :address, presence: true
   validates :name, presence: true

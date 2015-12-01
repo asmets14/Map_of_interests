@@ -1,4 +1,4 @@
-ActiveAdmin.register Interest do
+ActiveAdmin.register PointOfInterest do
    permit_params do
          parameters = [:name,
                        :category_id,
@@ -14,7 +14,7 @@ ActiveAdmin.register Interest do
         end
 
   batch_action :published do |id|
-    Interest.find(id).each do |e|
+    PointOfInterest.find(id).each do |e|
       e.published =  true
       e.save
     end
@@ -22,7 +22,7 @@ ActiveAdmin.register Interest do
   end
 
   batch_action :unpublished do |id|
-    Interest.find(id).each do |e|
+    PointOfInterest.find(id).each do |e|
       e.published =  false
       e.save
     end
