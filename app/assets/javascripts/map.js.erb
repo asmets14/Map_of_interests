@@ -145,7 +145,7 @@ function getMeThere(lat, lng){
 function recoveryDataBookmarkers(id){
   $.ajax({
     type: "POST",
-    url: '/bookmarkers',
+    url: '/bookmarks',
     data : 'interest_id='+id,
     success: function (data) {
       alert('Point bookmarked');
@@ -160,7 +160,7 @@ function recoveryDataBookmarkers(id){
 function destroyBookmarkers(id){
   $.ajax({
     type: "DELETE",
-    url: '/bookmarkers/:id',
+    url: '/bookmarks/:id',
     data : 'interest_id='+id,
     success: function (data) {
       alert('Point unbookmarked');
@@ -219,7 +219,7 @@ function addMarker(arrDataMarker) {
         if (loggedIn == true ){
             $.ajax({
               type: "GET",
-              url: '/bookmarkers/:id',
+              url: '/bookmarks/:id',
               data : 'interest_id='+ arrDataMarker[i].id,
               async : false,
               success: function (data, flagBookmarker) {
