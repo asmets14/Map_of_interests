@@ -1,11 +1,11 @@
 var map;
-var flagBookmarker;
+var flagBookmark;
 var circle;
 var homePosition;
 var infoBubble;
 var markers = [];
-var arrCategories = [];
-var categoriesJsonFormat = [];
+var categoriesNames = [];
+var categories = [];
 var directionsDisplay = new google.maps.DirectionsRenderer;
 var loggedIn = false;
 
@@ -26,9 +26,9 @@ function recoveryDataCategories(){
 }
 
 function createArrCategories(data_categories){
-  categoriesJsonFormat = data_categories;
-  for (i = 0; i < categoriesJsonFormat.length ; i++){
-    arrCategories.push(categoriesJsonFormat[i].category_id);
+  categories = data_categories;
+  for (i = 0; i < categories.length ; i++){
+    categoriesNames.push(categories[i].category_id);
   }
 }
 
@@ -89,8 +89,8 @@ function initMap() {
   else{
     i = 0;
     recoveryDataByFilter('category_id=all');
-    while(arrCategories[i]){
-      document.getElementById(arrCategories[i]).checked = true;
+    while(categoriesNames[i]){
+      document.getElementById(categoriesNames[i]).checked = true;
       i++;
     }
   }
@@ -106,7 +106,7 @@ function initMap() {
 function recoveryDataByFilter(datas){
   $.ajax({
     type: "GET",
-    url: '/interests',
+    url: '/point_of_interests',
     data : datas,
     async: false,
     success: function (data) {
@@ -142,10 +142,10 @@ function getMeThere(lat, lng){
   });
 }
 
-function recoveryDataBookmarkers(id){
+function createBookmark(id){
   $.ajax({
     type: "POST",
-    url: '/bookmarkers',
+    url: '/bookmarks',
     data : 'interest_id='+id,
     success: function (data) {
       alert('Point bookmarked');
@@ -157,15 +157,15 @@ function recoveryDataBookmarkers(id){
   });
 }
 
-function destroyBookmarkers(id){
+function destroyBookmark(id){
   $.ajax({
     type: "DELETE",
-    url: '/bookmarkers/:id',
+    url: '/bookmarks/:id',
     data : 'interest_id='+id,
     success: function (data) {
       alert('Point unbookmarked');
       infoBubble.close();
-      checkBookmarker('bookmarker');
+      checkBookmark('bookmark');
     },
     error: function(){
       alert('something is wrong');
@@ -173,15 +173,15 @@ function destroyBookmarkers(id){
   });
 }
 
-function initializeFlagBookkmarker(boolFlag){
-  flagBookmarker = boolFlag;
+function initializeFlagBookmark(boolFlag){
+  flagBookmark = boolFlag;
 }
 
 function createIconUrl(categoryId){
   j = 0;
-  while(arrCategories[j]){
-    if (categoriesJsonFormat[j].category_id == categoryId)
-      return (categoriesJsonFormat[j].icon_url);
+  while(categoriesNames[j]){
+    if (categories[j].category_id == categoryId)
+      return (categories[j].icon_url);
     j++;
   }
 }
@@ -189,7 +189,7 @@ function createIconUrl(categoryId){
 function addMarker(arrDataMarker) {
   var phone;
   var website;
-  var bookmarker;
+  var bookmark;
   var thumbnail;
   infoBubble = new InfoBubble;
 
@@ -219,20 +219,20 @@ function addMarker(arrDataMarker) {
         if (loggedIn == true ){
             $.ajax({
               type: "GET",
-              url: '/bookmarkers/:id',
+              url: '/bookmarks/:id',
               data : 'interest_id='+ arrDataMarker[i].id,
               async : false,
-              success: function (data, flagBookmarker) {
-                initializeFlagBookkmarker(data.flag);
+              success: function (data, flagBookmark) {
+                initializeFlagBookmark(data.flag);
               }
             })
-            if (flagBookmarker)
-              bookmarker = "<button onclick='destroyBookmarkers("+ arrDataMarker[i].id + ")' class='getmethere bookmarker-button'>Unbookmark</button>"
+            if (flagBookmark)
+              bookmark = "<button onclick='destroyBookmark("+ arrDataMarker[i].id + ")' class='getmethere bookmarker-button'>Unbookmark</button>"
             else
-              bookmarker = "<button onclick='recoveryDataBookmarkers("+ arrDataMarker[i].id + ")' class='getmethere bookmarker-button'>Bookmark</button>"
+              bookmark = "<button onclick='createBookmark("+ arrDataMarker[i].id + ")' class='getmethere bookmarker-button'>Bookmark</button>"
         }
         else{
-          bookmarker = ''
+          bookmark = ''
         }
         infoBubble.open(map, marker);
         infoBubble.addTab("<div class='infowindow'></div>",
@@ -241,7 +241,7 @@ function addMarker(arrDataMarker) {
           '<div id="bodywindow">'+
           '<p> Address:&nbsp' + arrDataMarker[i].address + '</p>' +
           "<button onclick='getMeThere("+ arrDataMarker[i].latitude +","+ arrDataMarker[i].longitude +")' class='getmethere'>Get me there</button>" +
-          bookmarker +
+          bookmark +
           phone +
           thumbnail +
           website +
@@ -292,16 +292,16 @@ function checkCircle(id){
   }
 }
 
-function checkBookmarker(id){
+function checkBookmark(id){
   if (document.getElementById(id).checked == true)
   {
     for (i = 0; i < markers.length; i++) {
       markers[i].setMap(null);
     }
-    valueCategoriesCheckbox(arrCategories, false);
+    valueCategoriesCheckbox(categoriesNames, false);
     $.ajax({
       type: "GET",
-      url: '/bookmarkers',
+      url: '/bookmarks',
       data : '',
       success: function (data) {
         addMarker(data);
@@ -310,6 +310,6 @@ function checkBookmarker(id){
   }
   else{
     recoveryDataByFilter('category_id=all');
-    valueCategoriesCheckbox(arrCategories, true);
+    valueCategoriesCheckbox(categoriesNames, true);
   }
 }

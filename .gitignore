@@ -15,5 +15,7 @@
 /log/*.log
 /tmp
 
+public/*
+
 /app/assets/javascripts/sandbox.js
 */.DS_Store
