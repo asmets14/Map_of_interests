@@ -1,3 +1,6 @@
+$navbar-background: rgba(255, 175, 79, 0.6);
+$color-navbar: #815D3C;
+
 .question-signup{
   position:   relative;
   top:        18px;
@@ -9,7 +12,7 @@
 .sign-in{
   background-color: #fff07A;
   text-align:       center;
-  color:            #815D3C;
+  color:            $color-navbar;
   margin-top:       35px;
   border-radius:    10px;
 }
@@ -46,8 +49,8 @@
 
 a.nav-expander {
   background:         none repeat scroll 0 0;
-  background-color:   rgba(255, 175, 79, 0.6);
-  color:              #815D3C;
+  background-color:   $navbar-background;
+  color:              $color-navbar;
   display:            block;
   font-size:          15px;
   height:             65px;
@@ -78,7 +81,7 @@ a.nav-expander.fixed {
 }
 
 nav {
-  background-color:   rgba(255, 175, 79, 0.6);
+  background-color:   $navbar-background;
   display:            block;
   height:             100%;
   overflow:           auto;
@@ -125,7 +128,7 @@ body.nav-expanded {
 }
 
 .main-menu li a {
-  color: #815D3C;
+  color:           $color-navbar;
   text-decoration: none;
 }
 
