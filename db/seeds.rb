@@ -27,7 +27,7 @@ require 'csv'
       elsif row[:category] == 'Club'
         category_id = 5
       end
-    Interest.create!({
+    PointOfInterest.create!({
       :name => row[:name],
       :address => row[:address],
       :longitude => row[:longitude],
