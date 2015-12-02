@@ -13,23 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151202095314) do
 
-  create_table "Point_of_interests", force: true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.float    "longitude"
-    t.float    "latitude"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "thumbnail_file_name"
-    t.string   "thumbnail_content_type"
-    t.integer  "thumbnail_file_size"
-    t.datetime "thumbnail_updated_at"
-    t.string   "website"
-    t.string   "phone"
-    t.boolean  "published",              default: true
-    t.integer  "category_id"
-  end
-
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
     t.text     "body"
@@ -77,6 +60,23 @@ ActiveRecord::Schema.define(version: 20151202095314) do
     t.string   "thumbnail_content_type"
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
+  end
+
+  create_table "point_of_interests", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.float    "longitude"
+    t.float    "latitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
+    t.string   "website"
+    t.string   "phone"
+    t.boolean  "published",              default: true
+    t.integer  "category_id"
   end
 
   create_table "taggings", force: true do |t|

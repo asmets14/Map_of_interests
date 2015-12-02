@@ -1,5 +1,5 @@
 class RenameInterestsToPointOfInterests < ActiveRecord::Migration
   def change
-    rename_table :Interests, :Point_of_interests
+    rename_table :interests, :point_of_interests
   end
 end
