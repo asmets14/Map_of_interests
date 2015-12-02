@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201155015) do
+ActiveRecord::Schema.define(version: 20151202095314) do
 
-  create_table "PointOfInterests", force: true do |t|
+  create_table "Point_of_interests", force: true do |t|
     t.string   "name"
     t.string   "address"
     t.float    "longitude"

@@ -106,7 +106,7 @@ function initMap() {
 function recoveryDataByFilter(datas){
   $.ajax({
     type: "GET",
-    url: '/interests',
+    url: '/point_of_interests',
     data : datas,
     async: false,
     success: function (data) {

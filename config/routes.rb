@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   devise_for :users,
                  :controllers => { :registrations => 'users/registrations' }
 
-  resources :pointOfInterests
+  resources :point_of_interests
   resources :categories
   resources :bookmarks
-  root 'PointOfInterests#fullscreen'
+  root 'point_of_interests#fullscreen'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
