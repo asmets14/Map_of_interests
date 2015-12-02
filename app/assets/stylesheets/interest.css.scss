@@ -2,12 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$background: rgb(255, 175, 79)!important;
+$button: #FFF07A;
+$button-border: #FFFAC0;
+$text-color: #815D3C !important;
+$title-color: #9d1535;
+
 html, body{
   position:         absolute;
   height:           100%;
   width:            100%;
-  background-color: rgb(255, 175, 79)!important;
-  color:            #815D3C !important;
+  background-color: $background;
+  color:            $text-color !important;
 }
 
 .fadeout{
@@ -58,7 +64,7 @@ html, body{
 
 .getmethere{
   background :  rgb(255, 175, 79);
-  border-color: #FFFAC0;
+  border-color: $button-border;
   text-shadow:  none !important;
 }
 
@@ -66,15 +72,15 @@ html, body{
   margin-top: 15px;
   text-align: center;
   h2{
-    color: #9d1535;
+    color: $title-color;
   }
   .back-to-map-link{
     text-align: left !important;
   }
   .devise-submit{
-    color:        #815D3C;
-    background :  #FFF07A;
-    border-color: #FFFAC0;
+    color:        $text-color;
+    background :  $button;
+    border-color: $button-border;
     text-shadow:  none !important;
     margin-top :  15px;
     padding:      6px 60px;
@@ -82,7 +88,7 @@ html, body{
     font-weight:  normal;
   }
   .devise-submit:hover{
-    background : #FFF07A !important;
+    background : $button !important;
   }
 }
 
