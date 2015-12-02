@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  has_many :interests
+  has_many :point_of_interests
   has_attached_file :thumbnail,
                     styles: { medium: "300x300#", thumb: "100x100#" }
   validates_attachment_content_type :thumbnail, content_type: /\Aimage\/.*\Z/
