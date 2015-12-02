@@ -194,7 +194,12 @@ function addMarker(arrDataMarker) {
   infoBubble = new InfoBubble;
 
   for (i = 0; i < arrDataMarker.length ; i++){
-    icons = createIconUrl(arrDataMarker[i].category_id);
+    icons = new google.maps.MarkerImage(
+      createIconUrl(arrDataMarker[i].category_id),
+      new google.maps.Size(35, 35),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(17, 34),
+      new google.maps.Size(25, 25));
     var marker = new google.maps.Marker({
       clickable : true,
       position: { lat: arrDataMarker[i].latitude, lng: arrDataMarker[i].longitude },

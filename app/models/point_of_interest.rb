@@ -1,6 +1,6 @@
 class PointOfInterest < ActiveRecord::Base
-  has_many :bookmarkers
-  has_many :users, through: :bookmarkers
+  has_many :bookmarks
+  has_many :users, through: :bookmarks
   belongs_to :category
   acts_as_taggable
   geocoded_by :address
