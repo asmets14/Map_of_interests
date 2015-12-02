@@ -1,0 +1,14 @@
+<div class="row" >
+  <div class="col-sm-12" >
+    <div class=<%= elem %>>
+      <% @interest.each do |i| %>
+        <div class="row">
+          <% if i.category == elem.capitalize %>
+            <%= i.name %> :
+            <%= i.address %>
+          <% end%>
+        </div>
+      <% end%>
+    </div>
+  </div>
+</div>

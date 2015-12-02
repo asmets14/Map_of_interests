@@ -1,0 +1,47 @@
+<script type='text/javascript'>
+  $( document ).ready(function() {
+    google.maps.event.addDomListener(window, 'load', initMap);
+  })
+  <% if current_user %>
+      currentUser();
+  <% end %>
+</script>
+
+<div class="fullscreen">
+  <nav>
+    <ul class="list-unstyled main-menu">
+      <li class='text-right'>
+        <a href="#" id="nav-close" class="text-right">X</a>
+      </li>
+
+      <% @category.each do |c| %>
+        <li><a href="#">
+          <label><input type="checkbox"  id='<%= c[:category_id] %>' onclick="checkbox('<%= c[:category_id] %>')" > <%= c[:name] %></label>
+        </a></li>
+      <% end %>
+
+      <li><a class='cursor-pointer'><label ><input type="checkbox" id='circle' onclick="checkCircle('circle')"  > Within 10 min</label></a></li>
+
+      <% if current_user %>
+        <li><a class='cursor-pointer'><label><input type="checkbox" id='bookmark' onclick="checkBookmark('bookmark')" > Bookmarks</label></a></li>
+      <% end %>
+
+      <% if !current_user %>
+        <li class='question-signup'> Save your preferences ! </br>
+          <button type="button" class="btn sign-up-btn">
+            <%= link_to 'Sign up', new_user_registration_path %></li>
+          </button>
+        <li class='little-sign-in-out'><%= link_to 'sign in', new_user_session_path%></li>
+      <% else %>
+        <li class="sign-in"> Signed as <%= current_user.email %></li>
+        <li class='little-sign-in-out'>  <%= link_to 'Sign out',destroy_user_session_path, :method => :delete %></li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <a id="nav-expander" class="nav-expander fixed" style="">
+    <i class="fa fa-bars fa-lg white" ></i>
+  </a>
+</div>
+
+<div id="map"></div>
