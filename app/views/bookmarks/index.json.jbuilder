@@ -1,5 +1,5 @@
 @bookmarks.each do |b|
-  @book=  Interest.where(:id => (b.interest_id))
+  @book=  PointOfInterest.where(:id => (b.interest_id))
   json.array! @book do |i|
     json.id i.id
     json.name i.name
